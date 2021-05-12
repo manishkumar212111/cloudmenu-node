@@ -22,11 +22,11 @@ router.post('/upload', upload.single('file'), async (req, res) => {
           throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
         }
         let style = user.style;
-        style.logoUrl = `http://localhost:5000/${req.file.path}`;
+        style.logoUrl = `https://serene-springs-70492.herokuapp.com/${req.file.path}`;
         await userService.updateUserById(req.query.userId , {style})
       }
     }
-    return res.send(`http://localhost:5000/${req.file.path}`)
+    return res.send(`https://serene-springs-70492.herokuapp.com/${req.file.path}`)
 });
 
 module.exports = router;
