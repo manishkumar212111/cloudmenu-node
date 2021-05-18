@@ -21,8 +21,6 @@ router
 .route('/password')
 .post(auth('changePasssword'), validate(userValidation.changePassword), userController.changePassword)
 
-router
-.route('/auth')
-.post(auth('getUsers'), validate(userValidation.empty), userController.getUserDetails)
+router.get('/users/detail', validate(userValidation.empty), userController.getUserDetails)
 
 module.exports = router;

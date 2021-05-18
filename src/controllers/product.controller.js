@@ -4,7 +4,7 @@ const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { productService } = require('../services');
 require("dotenv").config();
-const stripe = require("stripe")(process.env.STRIP_SECRTE_KEY);
+const stripe = require("stripe")(process.env);
 
 const createProduct = catchAsync(async (req, res) => {
   const product = await productService.createProduct(req.body, req.user);
@@ -51,6 +51,10 @@ const addUserInfo = catchAsync(async (req, res) => {
 
 });
 
+const getProductsByUserName = catchAsync(async (req, res) => {
+  res.send(await productService.getProductsByUserName(req.params.userName));
+  
+});
 module.exports = {
   createProduct,
   getProducts,
@@ -58,5 +62,6 @@ module.exports = {
   updateProduct,
   deleteProduct,
   getProductsByUser,
-  addUserInfo
+  addUserInfo,
+  getProductsByUserName
 };

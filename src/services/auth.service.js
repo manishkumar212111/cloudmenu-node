@@ -84,11 +84,11 @@ const resetPassword = async (resetPasswordToken, newPassword) => {
   try {
 
     const { OAuth2Client } = require('google-auth-library')
-    const client = new OAuth2Client(config.GOOGLE_LOGIN_CLIENT_ID)
+    const client = ''
 
     const ticket = await client.verifyIdToken({
         idToken: token,
-        audience: config.GOOGLE_LOGIN_CLIENT_ID
+        // audience: config.GOOGLE_LOGIN_CLIENT_ID
     });
     console.log(ticket.getPayload());
     const { name, email, picture , given_name , family_name , } = ticket.getPayload();

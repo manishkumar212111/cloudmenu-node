@@ -59,5 +59,7 @@ module.exports = {
     private_key: envVars.IMAGEKIT_PRIVATE,
     imagekit_url: envVars.IMAGEKIT_BASE_URL,
   },
-  GOOGLE_LOGIN_CLIENT_ID : envVars.GOOGLE_LOGIN_CLIENT_ID
+  BASE_URL: envVars.BASE_URL,
+  APP_URL: envVars.APP_URL
+
 };

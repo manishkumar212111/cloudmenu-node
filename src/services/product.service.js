@@ -138,6 +138,13 @@ const addUserInfo = async (updateBody, userId ) => {
   }
 }
 
+const getProductsByUserName = async (userName) => {
+  let user = await User.find({userName : userName});
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+  }
+  return await Product.find({user : user[0].id})
+}
 module.exports = {
   createProduct,
   queryProducts,
@@ -146,5 +153,6 @@ module.exports = {
   deleteProductById,
   getProductsByUser,
   addUserInfo,
-  getuserInfo
+  getuserInfo,
+  getProductsByUserName
 };

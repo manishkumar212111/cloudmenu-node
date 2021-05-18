@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
-const bcrypt = require('bcryptjs');
+
 const { toJSON, paginate } = require('./plugins');
-const { roles } = require('../config/roles');
-const { notificationTypes } = require("../config/constants")
 
 const productSchema = mongoose.Schema(
   {
@@ -24,7 +21,6 @@ const productSchema = mongoose.Schema(
     },
     promoCode: {
         type: String,
-        trim: true,
         default : ""
     },
     imageType: {

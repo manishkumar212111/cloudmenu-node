@@ -68,6 +68,10 @@ const getProductUser = {
 const updateUserInfo = {
 
 }
+
+const empty = {
+  
+}
 module.exports = {
   createProduct,
   getProducts,
@@ -75,5 +79,6 @@ module.exports = {
   updateProduct,
   deleteProduct,
   getProductUser,
-  updateUserInfo
+  updateUserInfo,
+  empty
 };

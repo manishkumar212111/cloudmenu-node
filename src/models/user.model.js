@@ -42,10 +42,11 @@ const userSchema = mongoose.Schema(
     social_url: {
       type: Array,
       default : [
-        { text : "insta" , url: ""},
-        { text : "youtube" , url: ""},
-        { text : "tiktok" , url: ""},
-        { text : "twitter" , url: ""}
+        { text : "website" , url: "" , placeholder : "Your Website/Blog url"},
+        { text : "youtube" , url: "" , placeholder: "Your YouTube url"},
+        { text : "tiktok" , url: "" , placeholder: "Your TikTok username"},
+        { text : "twitter" , url: "" , placeholder: "Your Instagram username"},
+        { text : "other" , url: "" , placeholder: "Other"}
       ]
     },
     category: {

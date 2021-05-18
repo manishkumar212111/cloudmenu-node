@@ -3,6 +3,7 @@ var multer  = require('multer')
 const router = express.Router();
 const { userService } = require("../../services");
 const ApiError = require('../../utils/ApiError');
+const { BASE_URL } = require("../../config/config")
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './uploads')
@@ -22,11 +23,11 @@ router.post('/upload', upload.single('file'), async (req, res) => {
           throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
         }
         let style = user.style;
-        style.logoUrl = `https://serene-springs-70492.herokuapp.com/${req.file.path}`;
+        style.logoUrl = `${BASE_URL}${req.file.path}`;
         await userService.updateUserById(req.query.userId , {style})
       }
     }
-    return res.send(`https://serene-springs-70492.herokuapp.com/${req.file.path}`)
+    return res.send(`${BASE_URL}${req.file.path}`)
 });
 
 module.exports = router;

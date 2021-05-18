@@ -47,7 +47,7 @@ const changeEmail = catchAsync(async (req, res) => {
 });
 
 const getUserDetails = catchAsync(async (req , res) => {
-  const user = await userService.getUserDetails(req.user.id);
+  const user = await userService.getUserDetails(req.query.userName);
   res.send(user);
 })
 module.exports = {
