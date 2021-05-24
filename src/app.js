@@ -24,6 +24,9 @@ if (config.env !== 'test') {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
 }
+const fileUpload = require('express-fileupload');
+
+app.use(fileUpload());
 
 // set security HTTP headers
 app.use(helmet());

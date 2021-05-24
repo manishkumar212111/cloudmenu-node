@@ -12,7 +12,7 @@ const createProduct = catchAsync(async (req, res) => {
 });
 
 const getProducts = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['status', 'role','user']);
+  const filter = pick(req.query, ['status', 'role','user', 'user_type', 'category']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await productService.queryProducts(filter, options);
   res.send(result);
@@ -55,6 +55,16 @@ const getProductsByUserName = catchAsync(async (req, res) => {
   res.send(await productService.getProductsByUserName(req.params.userName));
   
 });
+
+const uploadCsv = catchAsync(async (req, res) => {
+  console.log(req.file , req.files , req.files.file , req.files.file.path);
+  res.send(await productService.uploadCsv(req.body.userId , req.files));
+});
+
+const addToStore = catchAsync(async (req, res) => {
+  let product = await productService.getProductById(req.params.productId);
+  res.send(await productService.addToStore(req.user.id , product , req.params.productId));
+});
 module.exports = {
   createProduct,
   getProducts,
@@ -63,5 +73,7 @@ module.exports = {
   deleteProduct,
   getProductsByUser,
   addUserInfo,
-  getProductsByUserName
+  getProductsByUserName,
+  uploadCsv,
+  addToStore
 };

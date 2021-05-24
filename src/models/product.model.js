@@ -9,10 +9,24 @@ const productSchema = mongoose.Schema(
       trim: true,
       default : ""
     },
+    user_type: {
+      type: String,
+      default: "user"
+    },
     productName: {
         type: String,
         trim: true,
         default : ""
+    },
+    category: {
+      type: String,
+      trim: true,
+      default : ""
+    
+    },
+    productType: {
+      type: String,
+      default: ""
     },
     productDescription: {
         type: String,
@@ -44,6 +58,10 @@ const productSchema = mongoose.Schema(
         trim: true,
         default : ""
         
+    },
+    originalProductId : {
+      type: mongoose.SchemaTypes.ObjectId,
+      default: ''
     },
     user: {
         type: mongoose.SchemaTypes.ObjectId,

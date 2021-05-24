@@ -5,6 +5,7 @@ const ApiError = require('../utils/ApiError');
 const { sendOTP  } = require('../services/email.service');
 const { userService } = require('../services')
 var mongoose = require('mongoose');
+const csvtojson = require("csvtojson");
 
 
 /**
@@ -145,6 +146,52 @@ const getProductsByUserName = async (userName) => {
   }
   return await Product.find({user : user[0].id})
 }
+
+const uploadCsv = async (userId , file) => {
+    let obj =[];
+    await csvtojson()
+    .fromString(file.file.data.toString())
+    .then(async (csvRow , cb)=>{ 
+      let h = [];
+      csvRow.forEach((itm) => {
+        h.push({
+          ...itm , user : userId
+        })
+      })  
+      await Product.insertMany(h)
+      obj = csvRow;
+      return h;
+    }).catch(error => {
+          console.log(error);
+          throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, "something wnet wrong");    
+      })
+      
+    return obj;
+}
+
+const addToStore = async (userId , product , productId) => {
+  const products = await Product.find({ user : userId , originalProductId : productId });
+  if(products && products.length){
+    throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, "This product is already added in user account");    
+  } else {
+    let createObj = {
+      brandName : product.brandName,
+      category : product.category,
+      productName : product.productName,
+      productDescription : product.productDescription,
+      price : product.price,
+      imgUrl : product.imgUrl,
+      imageType : product.imgUrl,
+      promoCode : product.promoCode,
+      url : product.url,
+      originalProductId : productId,
+      user : userId
+    }
+    product = await Product.create(createObj);
+    return product;
+  }
+
+}
 module.exports = {
   createProduct,
   queryProducts,
@@ -154,5 +201,7 @@ module.exports = {
   getProductsByUser,
   addUserInfo,
   getuserInfo,
-  getProductsByUserName
+  getProductsByUserName,
+  uploadCsv,
+  addToStore
 };

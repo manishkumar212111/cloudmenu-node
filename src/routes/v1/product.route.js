@@ -20,11 +20,15 @@ router
 
 router
   .route('/:productId')
+  .post(auth('getProducts'), validate(ProductValidation.addToStore), ProductController.addToStore)
   .get(auth('getProducts'), validate(ProductValidation.getProduct), ProductController.getProduct)
   .patch(auth('manageProducts'), validate(ProductValidation.updateProduct), ProductController.updateProduct)
   .delete(auth('manageProducts'), validate(ProductValidation.deleteProduct), ProductController.deleteProduct);
 
 router.get('/product/:userName', validate(ProductValidation.empty), ProductController.getProductsByUserName)
 router.get('/product/detail/:productId', validate(ProductValidation.empty), ProductController.getProduct)
+
+router.post('/product/csv/upload', validate(ProductValidation.fileUpload), ProductController.uploadCsv)
+
 
 module.exports = router;
