@@ -15,7 +15,9 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 router.post('/upload', upload.single('file'), async (req, res) => {
-    console.log(JSON.stringify(req.file), req.query)
+    try{
+
+      console.log(JSON.stringify(req.file),req.file, req.query)
     if(req.query.userId && req.query.type){
       if(req.query.type == 'logoUrl'){
         let user = await userService.getUserById(req.query.userId);
@@ -28,6 +30,9 @@ router.post('/upload', upload.single('file'), async (req, res) => {
       }
     }
     return res.send(`${BASE_URL}${req.file.path}`)
+    } catch(err) {
+      console.log(err)
+    }
 });
 
 module.exports = router;
