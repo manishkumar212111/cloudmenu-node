@@ -60,8 +60,7 @@ const productSchema = mongoose.Schema(
         
     },
     originalProductId : {
-      type: mongoose.SchemaTypes.ObjectId,
-      default: ''
+      type: mongoose.SchemaTypes.ObjectId
     },
     user: {
         type: mongoose.SchemaTypes.ObjectId,
