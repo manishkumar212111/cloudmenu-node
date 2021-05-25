@@ -19,13 +19,13 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 
       console.log(JSON.stringify(req.file),req.file, req.query)
     if(req.query.userId && req.query.type){
-      if(req.query.type == 'logoUrl'){
+      if(req.query.type == 'logoUrl' || req.query.type == 'bannerUrl'){
         let user = await userService.getUserById(req.query.userId);
         if(!user){
           throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
         }
         let style = user.style;
-        style.logoUrl = `${BASE_URL}${req.file.path}`;
+        style[req.query.type] = `${BASE_URL}${req.file.path}`;
         await userService.updateUserById(req.query.userId , {style})
       }
     }
