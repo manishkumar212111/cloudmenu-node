@@ -57,8 +57,9 @@ const getProductsByUserName = catchAsync(async (req, res) => {
 });
 
 const uploadCsv = catchAsync(async (req, res) => {
-  console.log(req.file , req.files , req.files.file , req.files.file.path);
-  res.send(await productService.uploadCsv(req.body.userId , req.files));
+  // console.log(req.file , req.files , req.body );
+  
+  res.send(await productService.uploadCsv(req.body.userId , req.file));
 });
 
 const addToStore = catchAsync(async (req, res) => {

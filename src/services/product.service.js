@@ -150,7 +150,7 @@ const getProductsByUserName = async (userName) => {
 const uploadCsv = async (userId , file) => {
     let obj =[];
     await csvtojson()
-    .fromString(file.file.data.toString())
+    .fromFile(file.path)
     .then(async (csvRow , cb)=>{ 
       let h = [];
       csvRow.forEach((itm) => {
