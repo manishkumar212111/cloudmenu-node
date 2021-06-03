@@ -171,7 +171,7 @@ const uploadCsv = async (userId , file) => {
           imgUrl : itm['Image url'],
           price : itm.Price,
           user_type : 'admin',
-          sole_at : itm['Sold at']
+          sold_at : itm['Sold at']
         })
       })  
       await Product.insertMany(h)
