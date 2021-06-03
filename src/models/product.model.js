@@ -64,7 +64,11 @@ const productSchema = mongoose.Schema(
       trim: true,
       default : ""
       
-  },
+    },
+    weight : {
+      type : Number,
+      default : 0
+    },
     originalProductId : {
       type: mongoose.SchemaTypes.ObjectId
     },
