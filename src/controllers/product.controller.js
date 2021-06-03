@@ -52,7 +52,8 @@ const addUserInfo = catchAsync(async (req, res) => {
 });
 
 const getProductsByUserName = catchAsync(async (req, res) => {
-  res.send(await productService.getProductsByUserName(req.params.userName));
+  console.log(req.query)
+  res.send(await productService.getProductsByUserName(req.params.userName, req.query.category));
   
 });
 

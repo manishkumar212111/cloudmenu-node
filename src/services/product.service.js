@@ -139,12 +139,19 @@ const addUserInfo = async (updateBody, userId ) => {
   }
 }
 
-const getProductsByUserName = async (userName) => {
+const getProductsByUserName = async (userName , category) => {
+  
   let user = await User.find({userName : userName});
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  return await Product.find({user : user[0].id})
+  let filter = {
+    user : user[0].id
+  }
+  if(category){
+    filter['category'] = category;
+  }
+  return await Product.find(filter);
 }
 
 const uploadCsv = async (userId , file) => {
@@ -155,11 +162,20 @@ const uploadCsv = async (userId , file) => {
       let h = [];
       csvRow.forEach((itm) => {
         h.push({
-          ...itm , user : userId
+          user : userId,
+          brandName : itm.brandName,
+          productName : itm.productName,
+          productDescription : itm['Product Description'],
+          productType : itm['Product Type'],
+          category : itm.Category,
+          imgUrl : itm['Image url'],
+          price : itm.Price,
+          user_type : 'admin',
+          sole_at : itm['Sold at']
         })
       })  
       await Product.insertMany(h)
-      obj = csvRow;
+      console.log(h);
       return h;
     }).catch(error => {
           console.log(error);

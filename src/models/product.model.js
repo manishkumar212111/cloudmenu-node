@@ -59,6 +59,12 @@ const productSchema = mongoose.Schema(
         default : ""
         
     },
+    sold_at: {
+      type: String,
+      trim: true,
+      default : ""
+      
+  },
     originalProductId : {
       type: mongoose.SchemaTypes.ObjectId
     },
