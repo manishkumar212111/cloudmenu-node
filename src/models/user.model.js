@@ -82,6 +82,15 @@ const userSchema = mongoose.Schema(
       enum: roles,
       default: 'user',
     },
+    stripeAccountId : {
+      type: String,
+    },
+    stripeOnboardingLink : {
+      type: String,
+    },
+    autoLoginLink : {
+      type: String,
+    },
     status: {
       type: Boolean,
       default: true,

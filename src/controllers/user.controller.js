@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { userService } = require('../services');
+const { userService, stripeService } = require('../services');
 
 const createUser = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
@@ -31,7 +31,12 @@ const updateUser = catchAsync(async (req, res) => {
 
 const deleteUser = catchAsync(async (req, res) => {
   await userService.deleteUserById(req.params.userId);
-  res.send({ status : true });
+  stripeService.deleteAccount({
+    accountId : req.params.userId
+  }, () => {
+    res.send({ status : true });
+  })
+
 });
 
 const changePassword = catchAsync(async (req, res) => {

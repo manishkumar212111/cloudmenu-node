@@ -2,13 +2,54 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { productService } = require('../services');
+const { productService, stripeService } = require('../services');
 require("dotenv").config();
 const stripe = require("stripe")(process.env);
 
-const createProduct = catchAsync(async (req, res) => {
+const createProduct = catchAsync(async (req, resp) => {
   const product = await productService.createProduct(req.body, req.user);
-  res.send(product);
+  let stripedata = {
+    "productId": product.id,
+    "name": product.productName,
+    "description": product.productDescription,
+    "length": 1,
+    "width": 1,
+    "height": 1,
+    "distanceUnit": "in",
+    "weight": product.weight ? product.weight : 1,
+    "massUnit": "lb",
+    "brand": product.brandName,
+    "category": product.category,
+    "images": [
+      product.imgUrl
+    ],
+    "currency": "USD",
+    "amount": product.price * 100
+}
+  try {
+  stripeService.createProduct(stripedata , async (response) => {
+    let res = response.data;
+    if(res && res.status){
+        if(req.body.user_type == 'admin'){
+          stripeService.createPaymentLink({
+            "accountId": req.user.id,
+            "productId": product.id
+          }, async (response) => {
+            await productService.updateProductById(product.id , {
+              url : response.data.content.url
+            });
+            resp.send(product);
+          })
+        }
+    } else {
+      await productService.deleteProductById(product.id);
+      //throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Something went wrong with stripe');
+    }
+    req.body.user_type !== 'admin' && resp.send(product);
+  })
+  } catch(err){
+    console.log(err);
+  }
 });
 
 const getProducts = catchAsync(async (req, res) => {
@@ -65,7 +106,28 @@ const uploadCsv = catchAsync(async (req, res) => {
 
 const addToStore = catchAsync(async (req, res) => {
   let product = await productService.getProductById(req.params.productId);
-  res.send(await productService.addToStore(req.user.id , product , req.params.productId));
+  let newlyAddedProduct =  await productService.addToStore(req.user.id , product , req.params.productId);
+
+  let stripeData = {
+    "accountId": req.user.id,
+    "productId": req.params.productId
+  }
+  try{
+
+    stripeService.createPaymentLink(stripeData , async (response) => {
+      let res = response.data;
+      if(res && res.status){
+        await productService.updateProductById(newlyAddedProduct.id , {
+          url : response.data.content.url
+        });
+      } else {
+        // //throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Something went wrong with stripe');
+      }
+    })
+    res.send();
+  } catch(err){
+    console.log(err);
+  }
 });
 module.exports = {
   createProduct,

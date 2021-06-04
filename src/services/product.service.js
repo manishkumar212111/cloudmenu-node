@@ -3,7 +3,7 @@ const { Product , User , Basic_info} = require('../models');
 const Moment = require('moment')
 const ApiError = require('../utils/ApiError');
 const { sendOTP  } = require('../services/email.service');
-const { userService } = require('../services')
+const  stripeService = require('../services/stripe.service')
 var mongoose = require('mongoose');
 const csvtojson = require("csvtojson");
 
@@ -175,8 +175,31 @@ const uploadCsv = async (userId , file) => {
           weight : itm['Weight (lbs)']
         })
       })  
-      await Product.insertMany(h)
-      console.log(h);
+      let products = await Product.insertMany(h);
+      let stripeData = [];
+      products.forEach((product) => {
+        stripeData.push({
+          "productId": product.id,
+          "name": product.productName,
+          "description": product.productDescription,
+          "length": 1,
+          "width": 1,
+          "height": 1,
+          "distanceUnit": "in",
+          "weight": product.weight ? product.weight : 1,
+          "massUnit": "lb",
+          "brand": product.brandName,
+          "category": product.category,
+          "images": [
+            product.imgUrl
+          ],
+          "currency": "USD",
+          "amount": product.price * 100
+        })
+      })
+      stripeService.bulkCreate({products : stripeData} , (response) => {
+        console.log("Bulk upload stripe" , response.data);
+      })
       return h;
     }).catch(error => {
           console.log(error);
@@ -202,6 +225,8 @@ const addToStore = async (userId , product , productId) => {
       promoCode : product.promoCode,
       url : product.url,
       originalProductId : productId,
+      sold_at : product.sold_at,
+      weight : product.weight,
       user : userId
     }
     product = await Product.create(createObj);
