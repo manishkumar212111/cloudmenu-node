@@ -19,29 +19,32 @@ const createProduct = catchAsync(async (req, resp) => {
     "weight": product.weight ? product.weight : 1,
     "massUnit": "lb",
     "brand": product.brandName,
-    "category": product.category,
+    "category": product.category ? product.category : 'all',
     "images": [
       product.imgUrl
     ],
     "currency": "USD",
     "amount": product.price * 100
 }
+if(req.body.user_type != 'admin'){
+  return resp.send(product)
+} else {     
   try {
-  stripeService.createProduct(stripedata , async (response) => {
-    let res = response.data;
-    if(res && res.status){
-            resp.send(product);
+    stripeService.createProduct(stripedata , async (response) => {
+      let res = response.data;
+      if(res && res.status){
+        return resp.send(product);
+          
+      } else {
+        await productService.deleteProductById(product.id);
+        return resp.send({data : res});
         
-    } else {
-      await productService.deleteProductById(product.id);
-      return resp.send({data : res});
-      
-      //throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Something went wrong with stripe');
+        //throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Something went wrong with stripe');
+      }
+    })
+    } catch(err){
+      console.log(err);
     }
-    req.body.user_type !== 'admin' && resp.send(product);
-  })
-  } catch(err){
-    console.log(err);
   }
 });
 
@@ -113,13 +116,14 @@ const addToStore = catchAsync(async (req, resp) => {
         product = await productService.updateProductById(newlyAddedProduct.id , {
           url : response.data.content.url
         });
+        return resp.send(product);
+
       } else {
         return resp.send({data : res});
 
         // //throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Something went wrong with stripe');
       }
     })
-    return resp.send(product);
   } catch(err){
     console.log(err);
   }
