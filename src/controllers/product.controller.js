@@ -97,7 +97,7 @@ const uploadCsv = catchAsync(async (req, res) => {
   res.send(await productService.uploadCsv(req.body.userId , req.file));
 });
 
-const addToStore = catchAsync(async (req, res) => {
+const addToStore = catchAsync(async (req, resp) => {
   let product = await productService.getProductById(req.params.productId);
   let newlyAddedProduct =  await productService.addToStore(req.user.id , product , req.params.productId);
 
@@ -110,16 +110,16 @@ const addToStore = catchAsync(async (req, res) => {
     stripeService.createPaymentLink(stripeData , async (response) => {
       let res = response.data;
       if(res && res.status){
-        await productService.updateProductById(newlyAddedProduct.id , {
+        product = await productService.updateProductById(newlyAddedProduct.id , {
           url : response.data.content.url
         });
       } else {
-        return res.send({data : res});
+        return resp.send({data : res});
 
         // //throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Something went wrong with stripe');
       }
     })
-    res.send();
+    return resp.send(product);
   } catch(err){
     console.log(err);
   }
