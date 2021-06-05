@@ -22,10 +22,12 @@ const register = catchAsync(async (req, resp) => {
         });       
     } else {
       await userService.deleteUserById(user.id);
+      return resp.send({data : res});
+      
       //throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Something went wrong with stripe');
     }
     const tokens = await tokenService.generateAuthTokens(user);
-    resp.send({ user, tokens });
+    return resp.send({ user, tokens });
   })
   } catch(err){
     console.log(err);

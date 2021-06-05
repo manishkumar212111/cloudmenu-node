@@ -30,19 +30,12 @@ const createProduct = catchAsync(async (req, resp) => {
   stripeService.createProduct(stripedata , async (response) => {
     let res = response.data;
     if(res && res.status){
-        if(req.body.user_type == 'admin'){
-          stripeService.createPaymentLink({
-            "accountId": req.user.id,
-            "productId": product.id
-          }, async (response) => {
-            await productService.updateProductById(product.id , {
-              url : response.data.content.url
-            });
             resp.send(product);
-          })
-        }
+        
     } else {
       await productService.deleteProductById(product.id);
+      return resp.send({data : res});
+      
       //throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Something went wrong with stripe');
     }
     req.body.user_type !== 'admin' && resp.send(product);
@@ -121,6 +114,8 @@ const addToStore = catchAsync(async (req, res) => {
           url : response.data.content.url
         });
       } else {
+        return res.send({data : res});
+
         // //throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Something went wrong with stripe');
       }
     })
