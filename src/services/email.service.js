@@ -1,6 +1,10 @@
 const nodemailer = require('nodemailer');
 const config = require('../config/config');
 const logger = require('../config/logger');
+
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey("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")
+
 const transport = nodemailer.createTransport(config.email.smtp);
 /* istanbul ignore next */
 if (config.env !== 'test') {
@@ -35,6 +39,23 @@ const sendResetPasswordEmail = async (to, token) => {
   const text = `Dear user,
   To reset your password, click on this link: ${resetPasswordUrl}
   If you did not request any password resets, then ignore this email.`;
+  const msg = {
+    to: to, // Change to your recipient
+    from: 'test@example.com', // Change to your verified sender
+    subject: 'Reset password',
+    text: text,
+    // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  }
+
+  sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+  
   await sendEmail(to, subject, text);
 };
 
