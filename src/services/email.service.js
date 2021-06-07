@@ -41,7 +41,7 @@ const sendResetPasswordEmail = async (to, token) => {
   If you did not request any password resets, then ignore this email.`;
   const msg = {
     to: to, // Change to your recipient
-    from: 'test@example.com', // Change to your verified sender
+    from: 'eric@superfruit.app', // Change to your verified sender
     subject: 'Reset password',
     text: text,
     // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
@@ -56,7 +56,7 @@ const sendResetPasswordEmail = async (to, token) => {
     console.error(error)
   })
   
-  await sendEmail(to, subject, text);
+  // await sendEmail(to, subject, text);
 };
 
 const sendOTP = async (to, otp) => {
