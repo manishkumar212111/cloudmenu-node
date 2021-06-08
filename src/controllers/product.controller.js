@@ -51,6 +51,7 @@ if(req.body.user_type != 'admin'){
 const getProducts = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['status', 'role','user', 'user_type', 'category']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  options.limit = options.limit ? options.limit : 500;
   const result = await productService.queryProducts(filter, options);
   res.send(result);
 });
