@@ -1,0 +1,1209 @@
+[{
+  "_id": {
+    "$oid": "60bbb654d588a048c829b81f"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "admin",
+  "status": true,
+  "userName": "admin",
+  "email": "admin1sdcsd23@gmail.com",
+  "password": "$2a$08$xJfYi9iBabDiTsjL1vCQGuLkYja64cZX1pADZMNgtI1u7lZxSN15i",
+  "createdAt": {
+    "$date": "2021-06-05T17:37:24.978Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-18T00:34:35.412Z"
+  },
+  "__v": 0,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/3817bb4009ec467d8c97986e4ffadf17",
+  "stripeAccountId": "acct_1Iz3R32eMEHxzNld",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/WFfeUh64fLdQ"
+},{
+  "_id": {
+    "$oid": "60bbb6a2d588a048c829b822"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "fashion"
+  ],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "manish",
+  "email": "t68pf1@gmail.com",
+  "password": "$2a$08$q3uc1G.9XlAmeEeuwFEeJ.20KqyN2CrGVduYw5Dj2Am/pCmZy5r0O",
+  "createdAt": {
+    "$date": "2021-06-05T17:38:42.172Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-18T13:57:00.548Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/dcc9b2391e58427bb2e68aa73e37040f",
+  "stripeAccountId": "acct_1Iz3SI2crxfEHmro",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/b7XGcL5x8qoT"
+},{
+  "_id": {
+    "$oid": "60bbb721d588a048c829b828"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "beauty",
+    "food&drink",
+    "health&wellness",
+    "home&living",
+    "fashion"
+  ],
+  "style": {
+    "logoUrl": "https://api.superfruit.app/uploads/uploads-2021-06-05T17:47:01.768Zimages (1).png",
+    "bannerUrl": "https://api.superfruit.app/uploads/uploads-2021-06-05T17:47:09.927Zhotel.jpg",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "Ysai",
+  "email": "ysai.galaescal@gmail.com",
+  "password": "$2a$08$k/56.3rPQWdBRfbobF.Q5OeoHmpE1vX8hiVh8qKrZtycTZ8ZlZU4K",
+  "createdAt": {
+    "$date": "2021-06-05T17:40:49.610Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T17:58:16.090Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/04a17947012b4855b0efd04b779edf4f",
+  "stripeAccountId": "acct_1Iz3UL2czUOBxoxy",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/4V4X9ZzpRnUR"
+},{
+  "_id": {
+    "$oid": "60bd125758a4a15fe081b1cf"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "health&wellness"
+  ],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "test",
+  "email": "manishgerdcd@gmail.com",
+  "password": "$2a$08$0Ts1mswWzoQ5m6VVxDISv.XYTN0Sij5sOB3Om4kOomJ56zesLT1n6",
+  "createdAt": {
+    "$date": "2021-06-06T18:22:15.396Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-07T12:07:54.868Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/a730eaefb2f844e6ad1c2245b94e43e4",
+  "stripeAccountId": "acct_1IzQbz2cYNzlvtNT",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/rVJeJO1vBnD4"
+},{
+  "_id": {
+    "$oid": "60be0c74e0fd2469963e5c80"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "manish1",
+  "email": "manish.kumar212111@gmail.com",
+  "password": "$2a$08$Pv9wP/CW9xHjwgUllCHiVu1RAih./e8RR7i1gcitZch8IRNvHIjja",
+  "createdAt": {
+    "$date": "2021-06-07T12:09:24.781Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-08T16:43:49.025Z"
+  },
+  "__v": 0,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/0073eb1edb2744da8a107d377ea4e630",
+  "stripeAccountId": "acct_1IzhGj2ecsmTKSUv",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/xMhKEvXU11xw"
+},{
+  "_id": {
+    "$oid": "60be1cb664e26a727b0abbb7"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "fdsafdsa",
+  "email": "fdsafdsa@sds.com",
+  "password": "$2a$08$G3Nm5YDdaxxgewrpXjMjE.cRBDkVxwQAFEQDrMF.12EiBjhFVOow.",
+  "createdAt": {
+    "$date": "2021-06-07T13:18:46.128Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-07T13:36:46.976Z"
+  },
+  "__v": 0,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/04053148cf394d6d80472649d4b24505",
+  "stripeAccountId": "acct_1IziLq2fZIneFcRM",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/Bw5hEXXgWpNu"
+},{
+  "_id": {
+    "$oid": "60be1df464e26a727b0abbba"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "fdsafdsafds",
+  "email": "123@123.com",
+  "password": "$2a$08$i3BqosEMoxnHZTrQYrUSkOrfRpM3BAtTZmUXIJuDzX4xoDnU7/emW",
+  "createdAt": {
+    "$date": "2021-06-07T13:24:04.009Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-07T13:31:06.128Z"
+  },
+  "__v": 0,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/f6c055bbc704435e8e9ab384a65e9acc",
+  "stripeAccountId": "acct_1IziQy2fsTVHT5X6",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/dgrE1LRJq2Go"
+},{
+  "_id": {
+    "$oid": "60be41dabb2ee473708ee6b7"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "xyz.com",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "youtube.com",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "beauty"
+  ],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "Krish11",
+  "email": "krishna.dewda490@gmail.com",
+  "password": "$2a$08$S1g0clbar6Y.H0bBXx4RPeJIr5bBziCCfNueir9EWgly/MQfld7A2",
+  "createdAt": {
+    "$date": "2021-06-07T15:57:14.307Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-09T17:14:17.280Z"
+  },
+  "__v": 2,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/ff55bdc8486e4cbe888de2973070e3d7",
+  "stripeAccountId": "acct_1IzkpC2e2w2Mksj2",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/oN49iWUzqJD7"
+},{
+  "_id": {
+    "$oid": "60be4917bb2ee473708ee6c8"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "hi123",
+  "email": "testing1@gmail.com",
+  "password": "$2a$08$9tOE2Ob9YWxbKrqJuhEuouZnU98TEgVPyxMZxjdLn6mvKnsLZBEca",
+  "createdAt": {
+    "$date": "2021-06-07T16:28:07.499Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-07T16:37:57.909Z"
+  },
+  "__v": 0,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/63d09a7413d84e6593560a31ed22381c",
+  "stripeAccountId": "acct_1IzlJ52fPX4AontX",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/ReaT62o44hEZ"
+},{
+  "_id": {
+    "$oid": "60befe21632ebb05bfdd3a7d"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "health&wellness",
+    "home&living"
+  ],
+  "style": {
+    "logoUrl": "http://api.superfruit.app/uploads/uploads-2021-06-08T16:46:36.240Zvector.png",
+    "bannerUrl": "http://api.superfruit.app/uploads/uploads-2021-06-10T04:56:14.405ZDesillusion+X+TCSS©JulienBinchBinet-3236.jpg",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "eric",
+  "email": "ericoliang@gmail.com",
+  "password": "$2a$08$bjKadRu3y0TK9swleEqaBO6ifnNEdcZ6skFk2/F.XvDniIKDTrVWu",
+  "createdAt": {
+    "$date": "2021-06-08T05:20:33.523Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-18T18:08:40.313Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/b12c37dee9a7411c8977589b39e06bee",
+  "stripeAccountId": "acct_1IzxMb2cafcVz5Qm",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/9gL4U19tCZF8"
+},{
+  "_id": {
+    "$oid": "60bf00ed632ebb05bfdd3a7f"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "leeseanr.com",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "health&wellness",
+    "fashion"
+  ],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "sean",
+  "email": "leeseanr@icloud.com",
+  "password": "$2a$08$27LU1lYLTYE3iT/5nn4ctOVA/sx6.VYgUSHOA0bVtsw.ndr9jYK/2",
+  "createdAt": {
+    "$date": "2021-06-08T05:32:29.869Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-08T05:33:03.537Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/06eb340a1e4a4a0a845aadd4eba61810",
+  "stripeAccountId": "acct_1IzxYA2e2uZoHEyn",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/xtd42IMKqeXV"
+},{
+  "_id": {
+    "$oid": "60bf0c91632ebb05bfdd3a81"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "christest",
+  "email": "chrisnhawaii@gmail.com",
+  "password": "$2a$08$w1.FcQDcGUqlQXmCucytnO6rT1vW15M8NextgwEgUdQyzIKAH9gfm",
+  "createdAt": {
+    "$date": "2021-06-08T06:22:09.101Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-20T06:22:58.432Z"
+  },
+  "__v": 0,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/9e605b6a54ef487f8f5c49b01c742ca2",
+  "stripeAccountId": "acct_1IzyKD2fXbGGOxD0",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/fzy5ScKxMFZ0"
+},{
+  "_id": {
+    "$oid": "60c03c59632ebb05bfdd3acb"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "beauty",
+    "health&wellness"
+  ],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "sliang",
+  "email": "sarahliang07@gmail.com",
+  "password": "$2a$08$eMvXe7p58e0dBH5alNOKCuCLiuQrUNpavMdyZxrMSC5H5opNU3Ray",
+  "createdAt": {
+    "$date": "2021-06-09T03:58:17.055Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-09T23:39:00.370Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/1fff19c724894a63879810c06465c766",
+  "stripeAccountId": "acct_1J0IYX2fQwCZRUMA",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/CZ8OLqkfy7Sk"
+},{
+  "_id": {
+    "$oid": "60c226159932352cd9896f06"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "fashion"
+  ],
+  "style": {
+    "logoUrl": "http://api.superfruit.app/uploads/uploads-2021-06-12T06:39:44.673Zimgpsh_fullsize_anim (1).png",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "Krish14",
+  "email": "technoyuga18@gmail.com",
+  "password": "$2a$08$nKmVfsAY4tUnZzjcAHKZs.4h7BY9wCZJbIeTJ1fLzWXo8CIRh/Jam",
+  "createdAt": {
+    "$date": "2021-06-10T14:47:49.943Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-18T17:08:36.678Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/16f56f3cde2b40debdb75c4af26a3d4f",
+  "stripeAccountId": "acct_1J0pAg2fzdLpZDoJ",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/qaJMOD9T8cFG"
+},{
+  "_id": {
+    "$oid": "60c2317d9932352cd9896f18"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "admin",
+  "status": true,
+  "userName": "superadmin",
+  "email": "admin@superfruit.app",
+  "password": "$2a$08$PaIM2KjcRNSOlZGRMJ9Q1Om0m3kYx24A0YniVslnwYNtItjMwWCOi",
+  "createdAt": {
+    "$date": "2021-06-10T15:36:29.889Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-10T15:59:46.653Z"
+  },
+  "__v": 0,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/bbf155295ecf49f281a196a61d5cd4f7",
+  "stripeAccountId": "acct_1J0pvm2czRoqny4S",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/FwrYMQMx1jwt"
+},{
+  "_id": {
+    "$oid": "60c2ac989932352cd9896f23"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "https://www.obobsalva.com.br",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "valdir_oliveira_filho@hotmail.com",
+  "email": "valdir_oliveira_filho@hotmail.com",
+  "password": "$2a$08$TKY344IwMDCb9FQaeMB1SetwR57KnVQuZ0kYD55Jys.5EKDSSq6JC",
+  "createdAt": {
+    "$date": "2021-06-11T00:21:44.514Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-11T00:22:02.392Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/da73374dd8f74880a67e25eeceb7333c",
+  "stripeAccountId": "acct_1J0y842fc8NSW0To",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/r8lMmhgdY9aF"
+},{
+  "_id": {
+    "$oid": "60c2d0979932352cd9896f25"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "ayman.alkhalas",
+  "email": "ayman.alkhalas@gmail.com",
+  "password": "$2a$08$CcBl2AZhFzKnv9YSVb5tEuHFU1a7QPQnPjqkRZcS2/9MjkrKDiPCm",
+  "createdAt": {
+    "$date": "2021-06-11T02:55:19.938Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-11T02:56:25.616Z"
+  },
+  "__v": 0,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/775cb3394bed447fabe5155795c300c1",
+  "stripeAccountId": "acct_1J10Wi2ecM29VnrL",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/HS9eXXv87xbV"
+},{
+  "_id": {
+    "$oid": "60c5841af67e8903d61ef7ab"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "fashion",
+    "home&living"
+  ],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "Superstreak",
+  "email": "kumarreddychaganti314@gmail.com",
+  "password": "$2a$08$hl0LtKfUle2cM8o4NErEY..RaxO.AB64x1e66ZtrrkiGPUnvgjpZm",
+  "createdAt": {
+    "$date": "2021-06-13T04:05:46.905Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-13T04:24:25.753Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/0aa8ea55f468449db4bcca3c8c1a83d3",
+  "stripeAccountId": "acct_1J1kZz2cWk0rawFh",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/hLx49jI1TWW3"
+},{
+  "_id": {
+    "$oid": "60c590d9f67e8903d61ef7ad"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "jack_r_lee",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "fashion",
+    "home&living",
+    "food&drink"
+  ],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "Jack_r_lee",
+  "email": "minghaoli414@gmail.com",
+  "password": "$2a$08$Erdqh5ZcfUb.lgLS0f6ErOtTEkBP/LAUWfuuzwy/E8QV9XQSZCLLC",
+  "createdAt": {
+    "$date": "2021-06-13T05:00:09.701Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-13T05:02:05.830Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/b24687a499c64267996a2eece982920f",
+  "stripeAccountId": "acct_1J1lQc2eoKP1yAq5",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/ia4oM5Me6RJS"
+},{
+  "_id": {
+    "$oid": "60c74a30f67e8903d61ef7b2"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [
+    "fashion"
+  ],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "coolastekatten",
+  "email": "karlsson.pontus@outlook.com",
+  "password": "$2a$08$NUivwejrmT0g8h3IQUJWnOqYBnOsGMxH6cF2/9T1el8R090e3kkxW",
+  "createdAt": {
+    "$date": "2021-06-14T12:23:12.396Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-14T12:24:24.485Z"
+  },
+  "__v": 1,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/e986478943004fb1bde8e16eede2731e",
+  "stripeAccountId": "acct_1J2Eou2e2aUJs8fO",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/fuEsfWFyXARa"
+},{
+  "_id": {
+    "$oid": "60c89c8ff67e8903d61ef7b7"
+  },
+  "early_access": false,
+  "terms_condition": true,
+  "social_url": [
+    {
+      "text": "website",
+      "url": "",
+      "placeholder": "Your Website/Blog url"
+    },
+    {
+      "text": "youtube",
+      "url": "",
+      "placeholder": "Your YouTube url"
+    },
+    {
+      "text": "tiktok",
+      "url": "",
+      "placeholder": "Your TikTok username"
+    },
+    {
+      "text": "twitter",
+      "url": "",
+      "placeholder": "Your Instagram username"
+    },
+    {
+      "text": "other",
+      "url": "",
+      "placeholder": "Other"
+    }
+  ],
+  "category": [],
+  "style": {
+    "logoUrl": "",
+    "bannerUrl": "",
+    "theme": "",
+    "buttonColor": ""
+  },
+  "contact": null,
+  "role": "user",
+  "status": true,
+  "userName": "Calypsofy ",
+  "email": "anoushkabhar@outlook.my",
+  "password": "$2a$08$L45B6VXILqpvpAG8wLfze.B1HNvYV/z477Q3Q8xdPSldjxc9PSMGS",
+  "createdAt": {
+    "$date": "2021-06-15T12:26:55.063Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-15T12:27:43.785Z"
+  },
+  "__v": 0,
+  "autoLoginLink": "https://payment.superfruit.app/users/authentication/fff21a9e836247dab858065ceee39cd1",
+  "stripeAccountId": "acct_1J2bM32fNAhPxfT5",
+  "stripeOnboardingLink": "https://connect.stripe.com/setup/c/z925iFR7V68d"
+}]
