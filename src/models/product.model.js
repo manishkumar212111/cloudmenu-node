@@ -4,83 +4,50 @@ const { toJSON, paginate } = require('./plugins');
 
 const productSchema = mongoose.Schema(
   {
-    brandName: {
-      type: String,
-      trim: true,
-      default : ""
-    },
-    user_type: {
-      type: String,
-      default: "user"
-    },
-    productName: {
-        type: String,
-        trim: true,
-        default : ""
+    // user: {
+    //     type: mongoose.SchemaTypes.ObjectId,
+    //     ref: 'User',
+    //     required: true,  
+    // },
+    restaurant: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Restaurant',
+      required: true,  
     },
     category: {
-      type: String,
-      trim: true,
-      default : ""
-    
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Category',
+      required: true,  
     },
-    productType: {
-      type: String,
-      default: ""
+    title: {
+      type : String
     },
-    productDescription: {
-        type: String,
-        trim: true,
-        default : ""
+    description: {
+      type: String
     },
-    promoCode: {
-        type: String,
-        default : ""
-    },
-    imageType: {
-        type: String,
-        trim: true,
-        default : ""
-    
-    },
-    imgUrl: {
-        type: String,
-        trim: true,
-        default : ""
-    
-    },
-    price : {
-      type : Number,
-      default : 0
-    },
-    url: {
-        type: String,
-        trim: true,
-        default : ""
-        
-    },
-    sold_at: {
-      type: String,
-      trim: true,
-      default : ""
-      
-    },
-    weight : {
-      type : Number,
-      default : 0
-    },
-    originalProductId : {
-      type: mongoose.SchemaTypes.ObjectId
-    },
-    user: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'User',
-        required: true,  
+    inStock: {
+      type : Boolean,
+      default: true
     },
     status : {
         type : Number,
         default : 1
     },
+    images : {
+      type: Array
+    },
+    currency: {
+      type: String
+    },
+    listingPrice : {
+      type : Number
+    },
+    sellingPrice : {
+      type : Number
+    },
+    discount : {
+      type : Number
+    }
   },
   {
     timestamps: true,
@@ -104,6 +71,6 @@ productSchema.plugin(paginate);
 //   };
 
   
-const product = mongoose.model('product', productSchema);
+const Product = mongoose.model('Product', productSchema);
 
-module.exports = product;
+module.exports = Product;

@@ -5,14 +5,15 @@ const register = {
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
-    userName: Joi.string().required(),
+    first_name: Joi.string(),
+    last_name: Joi.string(),
     role: Joi.string()
   }),
 };
 
 const login = {
   body: Joi.object().keys({
-    userName: Joi.string().required(),
+    email: Joi.string().email().required(),
     password: Joi.string().required(),
     role: Joi.string()
   }),

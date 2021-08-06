@@ -26,41 +26,11 @@ const userSchema = mongoose.Schema(
         }
       },
     },
-    early_access : {
-      type: Boolean,
-      default: false    
-    },
-    userName: {
+    first_name: {
       type: String,
-      required: true,
-      unique: true,
     },
-    terms_condition: {
-      type: Boolean,
-      default: true    
-    },
-    social_url: {
-      type: Array,
-      default : [
-        { text : "website" , url: "" , placeholder : "Your Website/Blog url"},
-        { text : "youtube" , url: "" , placeholder: "Your YouTube url"},
-        { text : "tiktok" , url: "" , placeholder: "Your TikTok username"},
-        { text : "twitter" , url: "" , placeholder: "Your Instagram username"},
-        { text : "other" , url: "" , placeholder: "Other"}
-      ]
-    },
-    category: {
-      type : Array,
-      default: []
-    },
-    style: {
-      type: Object,
-      default: {
-        logoUrl : "",
-        bannerUrl: "",
-        theme: "",
-        buttonColor: ""
-      }
+    last_name: {
+      type: String,
     },
     password: {
       type: String,
@@ -73,28 +43,38 @@ const userSchema = mongoose.Schema(
       // },
       private: true, // used by the toJSON plugin
     },
-    contact: {
-      type: String,
-      default: null,
-    },
     role: {
       type: String,
       enum: roles,
       default: 'user',
     },
-    stripeAccountId : {
-      type: String,
+    mobile: {
+      type : String,
+      // unique : true
     },
-    stripeOnboardingLink : {
-      type: String,
+    planName : {
+      type: String
     },
-    autoLoginLink : {
-      type: String,
+    planDetail : {
+        type: Object,
+        default : {
+            // start : "",
+            // expiry : ""
+        }
+    },
+    ccode: {
+      type : String,
     },
     status: {
       type: Boolean,
       default: true,
     },
+    gender: {
+      type : String
+    },
+    avatar: {
+      type: String
+    }
   },
   {
     timestamps: true,

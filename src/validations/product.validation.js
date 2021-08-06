@@ -3,27 +3,25 @@ const { password, objectId } = require('./custom.validation');
 
 const createProduct = {
   body: Joi.object().keys({
-    brandName : Joi.string().required(),
-    productName : Joi.string(),
-    productDescription : Joi.string(),
-    promoCode: Joi.string(),
-    url: Joi.string(),
-    user_type: Joi.string(),
-    weight : Joi.number(),
-    imgUrl: Joi.string(),
-    sold_at: Joi.string(),
-    category: Joi.string(),
-    imageType: Joi.string(),
-    price : Joi.number(),
-    productType: Joi.string()
+    restaurant : Joi.string().custom(objectId).required(),
+    category : Joi.string().custom(objectId).required(),
+    title : Joi.string(),
+    description: Joi.string(),
+    inStock: Joi.boolean(),
+    status: Joi.number(),
+    images : Joi.array(),
+    currency: Joi.string(),
+    listingPrice: Joi.number(),
+    sellingPrice: Joi.number(),
+    discount: Joi.number(),
   }),
 };
 
 const getProducts = {
   query: Joi.object().keys({
     sortBy: Joi.string(),
-    user_type: Joi.string(),
-    category: Joi.string(),
+    restaurant : Joi.string().custom(objectId),
+    category : Joi.string().custom(objectId),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
     user: Joi.custom(objectId)
@@ -49,19 +47,17 @@ const updateProduct = {
   }),
   body: Joi.object()
     .keys({
-      brandName : Joi.string(),
-      productName : Joi.string(),
-      productDescription : Joi.string(),
-      promoCode: Joi.string(),
-      url: Joi.string(),
-      sold_at: Joi.string(),
-      weight : Joi.number(),
-      category: Joi.string(),
-      user_type: Joi.string(),
-      imgUrl: Joi.string(),
-      productType: Joi.string(),
-      imageType: Joi.string(),
-      price : Joi.number()
+      restaurant : Joi.string().custom(objectId),
+      category : Joi.string().custom(objectId),
+      title : Joi.string(),
+      description: Joi.string(),
+      inStock: Joi.boolean(),
+      status: Joi.number(),
+      images : Joi.array(),
+      currency: Joi.string(),
+      listingPrice: Joi.number(),
+      sellingPrice: Joi.number(),
+      discount: Joi.number(),
     }),
 };
 

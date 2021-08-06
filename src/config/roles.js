@@ -4,35 +4,51 @@ const roleRights = new Map();
 roleRights.set(roles[0], [
   'getUsers',
   'manageUsers',
-  'getPlans',
-  'changePasssword',
-  'changeEmail',
-  'managePayment',
+  'manageRestaurants',
+  'getRestaurants',
+
+  'manageQrs',
+  'getQrs',
+
+  'manageCategorys',
+  'getCategorys',
+
+  'manageCmss',
+  'getCmss',
+
   'manageEnquirys',
-  'manageBlogs',
-  'getBlogs',
+  'getEnquirys',
+
   'manageProducts',
-  'getProducts'
+  'getProducts',
+
+  'manageOrders',
+  'getOrders',
   ]);
 
 roleRights.set(roles[1], [
   'getUsers',
   'manageUsers',
-  'getPlans',
-  'managePlans',
-  'changePasssword',
-  'changeEmail',
-  'manageTransactions',
-  'getTransactions',
+  'manageRestaurants',
+  'getRestaurants',
+
+  'manageCategorys',
+  'getCategorys',
+
+  'manageQrs',
+  'getQrs',
+
+  'manageCmss',
+  'getCmss',
+
   'manageEnquirys',
   'getEnquirys',
-  'manageBlogs',
-  'getBlogs',
-  'manageE_templates',
-  'getE_templates',
-  'manageProducts',
-  'getProducts'
 
+  'manageProducts',
+  'getProducts',
+
+  'manageOrders',
+  'getOrders',
 ]);
 
 

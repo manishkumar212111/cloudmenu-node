@@ -11,14 +11,14 @@ const config = require("../config/config");
  * @param {string} password
  * @returns {Promise<User>}
  */
-const loginUserWithUserNameAndPassword = async (userName, password, role="user") => {
-  const user = await userService.checkLoginByUserName(userName, role);
+const loginUserWithEmailAndPassword = async (email, password, role="user") => {
+  const user = await userService.checkLoginByEmail(email, role);
   if (!user) {
     throw new ApiError(httpStatus.UNAUTHORIZED, "User doesn't exist.");
   } else {
-    const user = await userService.getUserByUserName(userName);
+    const user = await userService.getUserByEmail(email);
     if (!user || !(await user.isPasswordMatch(password))) {
-      throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect userName or password');
+      throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect email or password');
     }
     return user;
   }
@@ -116,7 +116,7 @@ const resetPassword = async (resetPasswordToken, newPassword) => {
 };
 
 module.exports = {
-  loginUserWithUserNameAndPassword,
+  loginUserWithEmailAndPassword,
   logout,
   refreshAuth,
   resetPassword,

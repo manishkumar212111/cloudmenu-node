@@ -5,12 +5,16 @@ const createUser = {
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
-    userName: Joi.string().required(),
     role: Joi.string(),
-    contact: Joi.string(),
-    category: Joi.array(),
-    social_url: Joi.array(),
-    style: Joi.object()
+    mobile: Joi.string(),
+    ccode: Joi.string(),
+    first_name: Joi.string(),
+    last_name: Joi.string(),
+    status: Joi.boolean(),
+    gender: Joi.string(),
+    avatar: Joi.string(),
+    planName: Joi.string(),
+
   }),
 };
 
@@ -18,7 +22,6 @@ const getUsers = {
   query: Joi.object().keys({
     role: Joi.string(),
     status: Joi.boolean(),
-    userName: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -39,15 +42,16 @@ const updateUser = {
     .keys({
       email: Joi.string().email(),
       password: Joi.string().custom(password),
-      userName: Joi.string(),
       role: Joi.string(),
-      early_access : Joi.boolean(),
-      contact: Joi.string(),
-      category: Joi.array(),
-      social_url: Joi.array(),
-      style: Joi.object()
-    })
-    .min(1),
+      mobile: Joi.string(),
+      ccode: Joi.string(),
+      first_name: Joi.string(),
+      last_name: Joi.string(),
+      status: Joi.boolean(),
+      gender: Joi.string(),
+      avatar: Joi.string(),
+      planName: Joi.string(),
+    }),
 };
 
 const deleteUser = {

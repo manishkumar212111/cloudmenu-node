@@ -1,10 +1,8 @@
 const nodemailer = require('nodemailer');
 const config = require('../config/config');
 const logger = require('../config/logger');
-
-const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey("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")
-
+// const { e_templateService, blogService } = require("../services");
+// const { getEmailTemplateByType } = require('./e_template.service');
 const transport = nodemailer.createTransport(config.email.smtp);
 /* istanbul ignore next */
 if (config.env !== 'test') {
@@ -13,6 +11,39 @@ if (config.env !== 'test') {
     .then(() => logger.info('Connected to email server'))
     .catch(() => logger.warn('Unable to connect to email server. Make sure you have configured the SMTP options in .env'));
 }
+
+// {
+//   type : "",
+//   data : {},
+//   email : ""
+// }
+/**
+ * Send an email
+ * @param {string} to
+ * @param {string} subject
+ * @param {string} text
+ * @returns {Promise}
+ */
+const sendSmailUsingTemplate = async (data) => {
+  try{
+    // console.log(e_templateService , blogService , getEmailTemplateByType);
+    // let emTemplate = await getEmailTemplateByType(data.type);
+    
+    // emTemplate = emTemplate[0];
+    // const subject = emTemplate.subject;
+    // emTemplate.dynamic_var.forEach(elem => {
+    //   emTemplate.content = emTemplate.content.split("{{"+elem+"}}").join(data.data[elem]);
+    // })
+    
+    // emTemplate.content = emTemplate.content.split("&lt;").join("<")
+    
+    // const msg = { from: config.email.from, to : data.email, subject : emTemplate.subject, html : emTemplate.content };
+    // await transport.sendMail(msg);
+  } catch (err){
+    console.log(err);
+  }
+  
+};
 
 /**
  * Send an email
@@ -35,28 +66,11 @@ const sendEmail = async (to, subject, text) => {
 const sendResetPasswordEmail = async (to, token) => {
   const subject = 'Reset password';
   // replace this url with the link to the reset password page of your front-end app
-  const resetPasswordUrl = `${config.APP_URL}reset-password?token=${token}`;
+  const resetPasswordUrl = `http://localhost:3000/#/reset-password/${token}`;
   const text = `Dear user,
   To reset your password, click on this link: ${resetPasswordUrl}
   If you did not request any password resets, then ignore this email.`;
-  const msg = {
-    to: to, // Change to your recipient
-    from: 'eric@superfruit.app', // Change to your verified sender
-    subject: 'Reset password',
-    text: text,
-    // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-  }
-
-  sgMail
-  .send(msg)
-  .then(() => {
-    console.log('Email sent')
-  })
-  .catch((error) => {
-    console.error(error)
-  })
-  
-  // await sendEmail(to, subject, text);
+  await sendEmail(to, subject, text);
 };
 
 const sendOTP = async (to, otp) => {
@@ -72,4 +86,5 @@ module.exports = {
   sendEmail,
   sendResetPasswordEmail,
   sendOTP,
+  sendSmailUsingTemplate,
 };
