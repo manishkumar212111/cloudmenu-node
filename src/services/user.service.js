@@ -58,6 +58,11 @@ const checkLoginByEmail = async (email, role="user") => {
   return User.findOne({ email, status: true, role:role });
 };
 
+
+const checkLoginByMobile = async (mobile, role="user", ccode) => {
+  return User.findOne({ mobile, role:role , ccode : ccode });
+};
+
 /**
  * Update user by id
  * @param {ObjectId} userId
@@ -149,5 +154,6 @@ module.exports = {
   changeEmail,
   getUserDetails,
   getUserByEmail,
-  checkLoginByEmail
+  checkLoginByEmail,
+  checkLoginByMobile
 };

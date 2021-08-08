@@ -25,6 +25,28 @@ const loginUserWithEmailAndPassword = async (email, password, role="user") => {
 };
 
 /**
+ * Login with username and password
+ * @param {string} mobile
+ * @param {string} password
+ * @returns {Promise<User>}
+ */
+ const loginUserWithMobileAndPassword = async (mobile, password, role="user", ccode) => {
+  const user = await userService.checkLoginByMobile(mobile, role, ccode);
+  if (!user) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, "User doesn't exist.");
+  } else {
+    if (!user || !(await user.isPasswordMatch(password))) {
+      throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect email or password');
+    }
+    if(!user.status){
+      throw new ApiError(httpStatus.UNAUTHORIZED, 'Your account is under verification, please contact admin');
+    }
+    return user;
+  }
+};
+
+
+/**
  * Logout
  * @param {string} refreshToken
  * @returns {Promise}
@@ -120,5 +142,6 @@ module.exports = {
   logout,
   refreshAuth,
   resetPassword,
-  googleLogin
+  googleLogin,
+  loginUserWithMobileAndPassword
 };

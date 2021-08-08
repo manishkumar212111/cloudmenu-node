@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema(
   {
     email: {
       type: String,
-      required: true,
+      // required: true,
       unique: true,
       trim: true,
       lowercase: true,
@@ -26,10 +26,7 @@ const userSchema = mongoose.Schema(
         }
       },
     },
-    first_name: {
-      type: String,
-    },
-    last_name: {
+    name: {
       type: String,
     },
     password: {
@@ -53,7 +50,8 @@ const userSchema = mongoose.Schema(
       // unique : true
     },
     planName : {
-      type: String
+      type: String,
+      default: "free"
     },
     planDetail : {
         type: Object,
@@ -67,7 +65,7 @@ const userSchema = mongoose.Schema(
     },
     status: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     gender: {
       type : String
