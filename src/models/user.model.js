@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema(
     email: {
       type: String,
       // required: true,
-      unique: true,
+      // unique: true,
       trim: true,
       lowercase: true,
       validate(value) {
@@ -91,6 +91,17 @@ userSchema.plugin(paginate);
  */
 userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
   const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
+  return !!user;
+};
+
+/**
+ * Check if email is taken
+ * @param {string} email - The user's email
+ * @param {ObjectId} [excludeUserId] - The id of the user to be excluded
+ * @returns {Promise<boolean>}
+ */
+ userSchema.statics.isMobileTaken = async function (mobile, excludeUserId) {
+  const user = await this.findOne({ mobile, _id: { $ne: excludeUserId } });
   return !!user;
 };
 

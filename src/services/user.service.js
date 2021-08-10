@@ -8,8 +8,8 @@ const { sendOTP } = require('../services/email.service');
  * @returns {Promise<User>}
  */
 const createUser = async (userBody) => {
-  if (await User.isEmailTaken(userBody.email)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+  if (await User.isMobileTaken(userBody.mobile)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Mobile already taken');
   }
   userBody.status = 0;
   const user = await User.create({ ...userBody });

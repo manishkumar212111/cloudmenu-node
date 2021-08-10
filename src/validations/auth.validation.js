@@ -8,7 +8,8 @@ const register = {
     name: Joi.string().required(),
     mobile: Joi.string().required(),
     ccode: Joi.string().required(),
-    role: Joi.string()
+    role: Joi.string(),
+    planName: Joi.string()
   }),
 };
 
