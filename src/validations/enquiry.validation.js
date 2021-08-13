@@ -5,7 +5,9 @@ const createEnquiry = {
   body: Joi.object().keys({
     email : Joi.string().required(),
     mobile : Joi.string().required(),
-    message : Joi.string().required(),
+    name : Joi.string().required(),
+    subject : Joi.string().required(),
+    description : Joi.string().required(),
     status : Joi.number(),
 
   }),
@@ -39,7 +41,9 @@ const updateEnquiry = {
     .keys({
         email : Joi.string(),
         mobile : Joi.string(),
-        message : Joi.string(),
+        name : Joi.string(),
+        subject : Joi.string(),
+        description : Joi.string(),
         status : Joi.number(), 
     }),
 };

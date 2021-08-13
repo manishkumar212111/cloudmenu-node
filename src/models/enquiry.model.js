@@ -11,7 +11,13 @@ const enquirySchema = mongoose.Schema(
     mobile: {
         type: String 
     },
-    message: {
+    name: {
+      type: String 
+    },
+    subject : {
+      type: String
+    },
+    description: {
         type : String
     },
     status : {

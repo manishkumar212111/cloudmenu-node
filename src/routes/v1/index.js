@@ -9,6 +9,7 @@ const categoryRoute = require('./category.route');
 const cmsRoute = require('./cms.route');
 const enquiryRoute = require('./enquiry.route');
 const orderRoute = require('./order.route');
+const commonRoute = require('./common.route');
 
 
 
@@ -24,6 +25,7 @@ router.use(['/category'], categoryRoute);
 router.use(['/cms'], cmsRoute);
 router.use(['/enquiry'], enquiryRoute);
 router.use(['/order'], orderRoute);
+router.use(['/common'], commonRoute);
 
 
 

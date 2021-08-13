@@ -11,7 +11,6 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Enquiry>}
  */
 const createEnquiry = async (enquiryBody , user) => {
-  enquiryBody.user = user.id;
   const enquiry = await Enquiry.create({ ...enquiryBody });
   return enquiry;
 };
