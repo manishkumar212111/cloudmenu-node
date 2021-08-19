@@ -5,6 +5,7 @@ const Token = require('../models/token.model');
 const ApiError = require('../utils/ApiError');
 const { tokenTypes } = require('../config/tokens');
 const config = require("../config/config");
+const { Restaurant } = require('../models');
 /**
  * Login with username and password
  * @param {string} username
@@ -20,7 +21,12 @@ const loginUserWithEmailAndPassword = async (email, password, role="user") => {
     if (!user || !(await user.isPasswordMatch(password))) {
       throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect email or password');
     }
-    return user;
+
+    const restaurant =await Restaurant.findOne({user: user.id}).select('status');
+    // user.restaurant = restaurant;
+    console.log(restaurant)
+
+    return {user : user, restaurant : restaurant};
   }
 };
 
@@ -41,7 +47,12 @@ const loginUserWithEmailAndPassword = async (email, password, role="user") => {
     if(!user.status){
       throw new ApiError(httpStatus.UNAUTHORIZED, 'Your account is under verification, please contact admin');
     }
-    return user;
+
+    const restaurant =await Restaurant.findOne({user: user.id}).select('status');
+    // user.restaurant = restaurant;
+    console.log(restaurant)
+
+    return {user: user, restaurant : restaurant};
   }
 };
 

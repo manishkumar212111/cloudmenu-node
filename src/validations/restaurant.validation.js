@@ -10,7 +10,6 @@ const createRestaurant = {
     planName: Joi.string(),
     planDetail: Joi.object(),
     name : Joi.string(),
-    address: Joi.string(),
     manager_name: Joi.string(),
     email: Joi.string(),
     mobile: Joi.string(),
@@ -22,7 +21,8 @@ const createRestaurant = {
     openingTime: Joi.string(),
     closingTime: Joi.string(),
     city: Joi.string(),
-    state: Joi.string()
+    state: Joi.string(),
+    password : Joi.string()
   }),
 };
 

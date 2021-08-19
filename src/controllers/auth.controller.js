@@ -26,8 +26,8 @@ const login = catchAsync(async (req, res) => {
     user = await authService.loginUserWithEmailAndPassword(email, password, role);
 
   }
-  const tokens = await tokenService.generateAuthTokens(user);
-  res.send({ user, tokens });
+  const tokens = await tokenService.generateAuthTokens(user.user);
+  res.send({ user: user.user,restaurant: user.restaurant,tokens: tokens });
 });
 
 const logout = catchAsync(async (req, res) => {

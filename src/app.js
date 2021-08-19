@@ -27,6 +27,9 @@ if (config.env !== 'test') {
 // const fileUpload = require('express-fileupload');
 
 // app.use(fileUpload());
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // set security HTTP headers
 app.use(helmet());

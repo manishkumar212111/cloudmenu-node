@@ -2,12 +2,29 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { restaurantService } = require('../services');
+const { restaurantService, userService } = require('../services');
 require("dotenv").config();
-const stripe = require("stripe")(process.env);
+const bcrypt = require('bcryptjs');
+const { User } = require('../models');
 
 const createRestaurant = catchAsync(async (req, res) => {
-  const restaurant = await restaurantService.createRestaurant(req.body, req.user);
+  let body = req.body;
+  if(req.files.businessDoc && req.files.businessDoc[0]){
+    body.businessDoc = req.files.businessDoc[0].path;
+  }
+  if(req.files.coverImage && req.files.coverImage[0]){
+    body.coverImage = req.files.coverImage[0].path;
+  }
+
+  const user = await User.findById(req.user);
+  // compare password
+  if (!user || !(await user.isPasswordMatch(req.body.password))) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect password');
+  }
+
+  delete body.password;
+
+  const restaurant = await restaurantService.createRestaurant(body, req.user);
   res.send(restaurant)
 });
 
@@ -28,7 +45,15 @@ const getRestaurant = catchAsync(async (req, res) => {
 });
 
 const updateRestaurant = catchAsync(async (req, res) => {
-  const restaurant = await restaurantService.updateRestaurantById(req.params.restaurantId, req.body);
+  let body = req.body;
+  if(req.files.businessDoc && req.files.businessDoc[0]){
+    body.businessDoc = req.files.businessDoc[0].path;
+  }
+  if(req.files.coverImage && req.files.coverImage[0]){
+    body.coverImage = req.files.coverImage[0].path;
+  }
+
+  const restaurant = await restaurantService.updateRestaurantById(req.params.restaurantId, body);
   res.send(restaurant);
 });
 

@@ -9,16 +9,10 @@ const restaurantSchema = mongoose.Schema(
       trim: true,
       default : ""
     },
-    // qr_code_url: {
-    //   type: String
-    // },
     logo_url: {
         type: String,
         default : ""
     },
-    // qr_text: {
-    //     type : String
-    // },
     description : {
         type : String
     },
@@ -38,9 +32,6 @@ const restaurantSchema = mongoose.Schema(
     name: {
         type : String
     },
-    address: {
-        type : String
-    },
     manager_name: {
         type : String
     },
@@ -53,15 +44,15 @@ const restaurantSchema = mongoose.Schema(
     ccode: {
         type : String
     },
-    documents: {
-        type : Array
+    businessDoc: {
+        type : String
     },
     full_address: {
         type : String
     },
     status: {
         type : Number,
-        default : 1
+        default : 0
     },
     coverImage: {
         type : String
@@ -81,7 +72,8 @@ const restaurantSchema = mongoose.Schema(
     user: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'User',
-        required: true,  
+        required: true, 
+        unique : true 
     }
   },
   {
