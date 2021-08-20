@@ -29,7 +29,7 @@ const createRestaurant = catchAsync(async (req, res) => {
 });
 
 const getRestaurants = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['status', 'role','user', 'user_type', 'category']);
+  const filter = pick(req.query, ['status', 'role','user', 'category']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   options.limit = options.limit ? options.limit : 500;
   const result = await restaurantService.queryRestaurants(filter, options);
@@ -46,10 +46,10 @@ const getRestaurant = catchAsync(async (req, res) => {
 
 const updateRestaurant = catchAsync(async (req, res) => {
   let body = req.body;
-  if(req.files.businessDoc && req.files.businessDoc[0]){
+  if(req?.files?.businessDoc && req?.files?.businessDoc[0]){
     body.businessDoc = req.files.businessDoc[0].path;
   }
-  if(req.files.coverImage && req.files.coverImage[0]){
+  if(req?.files?.coverImage && req.files?.coverImage[0]){
     body.coverImage = req.files.coverImage[0].path;
   }
 

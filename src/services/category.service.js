@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { Category} = require('../models');
+const { Category, Restaurant} = require('../models');
 // const Moment = require('moment')
 const ApiError = require('../utils/ApiError');
 // const { sendOTP  } = require('../services/email.service');
@@ -12,6 +12,11 @@ const ApiError = require('../utils/ApiError');
  */
 const createCategory = async (categoryBody , user) => {
   categoryBody.user = user.id;
+  const restaurant = await Restaurant.findOne({user : user}).select('_id');
+  if(!restaurant){
+    throw new ApiError(httpStatus.NOT_FOUND, "Can't find restaurant profile for this user");
+  }
+  categoryBody.restaurant = restaurant.id; 
   const category = await Category.create({ ...categoryBody });
   return category;
 };

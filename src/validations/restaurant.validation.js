@@ -29,6 +29,7 @@ const createRestaurant = {
 const getRestaurants = {
   query: Joi.object().keys({
     sortBy: Joi.string(),
+    status: Joi.number(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
     user: Joi.custom(objectId)
