@@ -2,19 +2,23 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { productService } = require('../services');
+const { productService, restaurantService } = require('../services');
 require("dotenv").config();
 
 const createProduct = catchAsync(async (req, res) => {
-  const product = await productService.createProduct(req.body, req.user);
+  let body = req.body;
+  if(req.files.productImg && req.files.productImg[0]){
+    body.imageUrl = req.files.productImg[0].path;
+  }
+  const resturant = await restaurantService.getRestaurantByUser(req.user.id);
+  body.restaurant = resturant.id;
+  const product = await productService.createProduct(body, req.user);
   res.send(product)
 });
 
 const getProducts = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['status', 'role','user', 'user_type', 'category']);
-  const options = pick(req.query, ['sortBy', 'limit', 'page']);
-  options.limit = options.limit ? options.limit : 500;
-  const result = await productService.queryProducts(filter, options);
+  const filter = pick(req.query, ['status','restaurant']);
+  const result = await productService.queryProducts(filter);
   res.send(result);
 });
 
@@ -27,7 +31,11 @@ const getProduct = catchAsync(async (req, res) => {
 });
 
 const updateProduct = catchAsync(async (req, res) => {
-  const product = await productService.updateProductById(req.params.productId, req.body);
+  let body = req.body;
+  if(req.files.productImg && req.files.productImg[0]){
+    body.imageUrl = req.files.productImg[0].path;
+  }
+  const product = await productService.updateProductById(req.params.productId, body);
   res.send(product);
 });
 

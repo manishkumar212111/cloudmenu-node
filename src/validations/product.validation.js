@@ -3,16 +3,18 @@ const { password, objectId } = require('./custom.validation');
 
 const createProduct = {
   body: Joi.object().keys({
-    restaurant : Joi.string().custom(objectId).required(),
-    category : Joi.string().custom(objectId).required(),
+    category : Joi.custom(objectId).required(),
     title : Joi.string(),
+    titleAr : Joi.string(),
     description: Joi.string(),
+    descriptionAr: Joi.string(),
     inStock: Joi.boolean(),
     status: Joi.number(),
     images : Joi.array(),
     currency: Joi.string(),
     listingPrice: Joi.number(),
     sellingPrice: Joi.number(),
+    sellingPriceAr: Joi.number(),
     discount: Joi.number(),
   }),
 };
@@ -32,7 +34,7 @@ const getProduct = {
   query: Joi.object().keys({
     sortBy: Joi.string(),
     user_type: Joi.string(),
-    category: Joi.string(),
+    category: Joi.string().custom(objectId),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
   }),
@@ -47,16 +49,18 @@ const updateProduct = {
   }),
   body: Joi.object()
     .keys({
-      restaurant : Joi.string().custom(objectId),
       category : Joi.string().custom(objectId),
       title : Joi.string(),
+      titleAr : Joi.string(),
       description: Joi.string(),
+      descriptionAr: Joi.string(),
       inStock: Joi.boolean(),
       status: Joi.number(),
       images : Joi.array(),
       currency: Joi.string(),
       listingPrice: Joi.number(),
       sellingPrice: Joi.number(),
+      sellingPriceAr: Joi.number(),
       discount: Joi.number(),
     }),
 };

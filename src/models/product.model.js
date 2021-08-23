@@ -22,7 +22,13 @@ const productSchema = mongoose.Schema(
     title: {
       type : String
     },
+    titleAr: {
+      type : String
+    },
     description: {
+      type: String
+    },
+    descriptionAr: {
       type: String
     },
     inStock: {
@@ -33,8 +39,8 @@ const productSchema = mongoose.Schema(
         type : Number,
         default : 1
     },
-    images : {
-      type: Array
+    imageUrl : {
+      type: String
     },
     currency: {
       type: String
@@ -45,9 +51,16 @@ const productSchema = mongoose.Schema(
     sellingPrice : {
       type : Number
     },
+    sellingPriceAr : {
+      type : Number
+    },
     discount : {
       type : Number
-    }
+    },
+    // modifierGroup: {
+    //   type: mongoose.SchemaTypes.ObjectId,
+    //   ref: 'ModifiersGroup',
+    // }
   },
   {
     timestamps: true,
