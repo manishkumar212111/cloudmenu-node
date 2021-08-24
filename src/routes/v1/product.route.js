@@ -28,7 +28,7 @@ router
 router
   .route('/:productId')
   .get(auth('getProducts'), validate(ProductValidation.getProduct), ProductController.getProduct)
-  .patch(auth('manageProducts'),cpUpload, validate(ProductValidation.updateProduct), ProductController.updateProduct)
+  .post(auth('manageProducts'),cpUpload, validate(ProductValidation.updateProduct), ProductController.updateProduct)
   .delete(auth('manageProducts'), validate(ProductValidation.deleteProduct), ProductController.deleteProduct);
 
 // router.get('/product/:userName', validate(ProductValidation.empty), ProductController.getProductsByUserName)

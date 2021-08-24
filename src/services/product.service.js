@@ -37,6 +37,7 @@ const queryProducts = async (filter, options) => {
     {
       $match: filter,
     },
+    { $sort: { createdDate: -1 } },
     {
       $lookup: {
         from: "categories",

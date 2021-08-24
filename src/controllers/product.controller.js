@@ -32,7 +32,7 @@ const getProduct = catchAsync(async (req, res) => {
 
 const updateProduct = catchAsync(async (req, res) => {
   let body = req.body;
-  if(req.files.productImg && req.files.productImg[0]){
+  if(req.files?.productImg && req.files.productImg[0]){
     body.imageUrl = req.files.productImg[0].path;
   }
   const product = await productService.updateProductById(req.params.productId, body);
