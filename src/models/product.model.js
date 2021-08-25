@@ -57,10 +57,15 @@ const productSchema = mongoose.Schema(
     discount : {
       type : Number
     },
-    // modifierGroup: {
-    //   type: mongoose.SchemaTypes.ObjectId,
-    //   ref: 'ModifiersGroup',
-    // }
+    modifierGroup: [{
+      value : {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Modifier'
+      },
+      label: {
+        type: String
+      }
+    }]
   },
   {
     timestamps: true,

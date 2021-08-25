@@ -2,17 +2,12 @@ const passport = require('passport');
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const { roleRights } = require('../config/roles');
-const User = require("../models/user.model");
 const verifyCallback = (req, resolve, reject, requiredRights) => async (err, user, info) => {
   if (err || info || !user) {
     return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate'));
   }
   req.user = user;
 
-  User.update(
-    {_id: user._id}, 
-    {'last_action': new Date().toISOString()}, 
-    () => {} );
 
   if (requiredRights.length) {
     const userRights = roleRights.get(user.role);

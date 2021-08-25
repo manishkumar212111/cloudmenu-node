@@ -24,7 +24,11 @@ roleRights.set(roles[0], [
 
   'manageOrders',
   'getOrders',
-  ]);
+
+  'manageModifiers',
+  'getModifiers',
+  
+]);
 
 roleRights.set(roles[1], [
   'getUsers',
@@ -49,6 +53,10 @@ roleRights.set(roles[1], [
 
   'manageOrders',
   'getOrders',
+
+
+  'manageModifiers',
+  'getModifiers',
 ]);
 
 

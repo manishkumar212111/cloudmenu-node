@@ -35,6 +35,7 @@ const updateProduct = catchAsync(async (req, res) => {
   if(req.files?.productImg && req.files.productImg[0]){
     body.imageUrl = req.files.productImg[0].path;
   }
+  console.log(body);
   const product = await productService.updateProductById(req.params.productId, body);
   res.send(product);
 });

@@ -16,6 +16,7 @@ const createProduct = {
     sellingPrice: Joi.number(),
     sellingPriceAr: Joi.number(),
     discount: Joi.number(),
+    modifierGroup: Joi.string(),
   }),
 };
 
@@ -62,6 +63,7 @@ const updateProduct = {
       sellingPrice: Joi.number(),
       sellingPriceAr: Joi.number(),
       discount: Joi.number(),
+      modifierGroup: Joi.string()
     }),
 };
 

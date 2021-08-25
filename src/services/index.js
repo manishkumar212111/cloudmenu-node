@@ -8,6 +8,7 @@ module.exports.qrService = require('./qr.service');
 module.exports.categoryService = require('./category.service');
 module.exports.cmsService = require('./cms.service');
 module.exports.enquiryService = require('./enquiry.service');
+module.exports.modifierService = require('./modifier.service');
 
 
 

@@ -14,6 +14,9 @@ const csvtojson = require("csvtojson");
  */
 const createProduct = async (productBody, user) => {
   productBody.user = user.id;
+  if(productBody.modifierGroup){
+    productBody.modifierGroup = JSON.parse(productBody.modifierGroup);
+  }
   const product = await Product.create({ ...productBody });
   return product;
 };
@@ -60,6 +63,8 @@ const queryProducts = async (filter, options) => {
             imageUrl: "$imageUrl",
             sellingPrice: "$sellingPrice",
             sellingPriceAr: "$sellingPriceAr",
+            modifierGroup: "$modifierGroup",
+
           },
         },
       },
@@ -94,6 +99,10 @@ const updateProductById = async (productId, updateBody) => {
   const product = await getProductById(productId);
   if (!product) {
     throw new ApiError(httpStatus.NOT_FOUND, "Product not found");
+  }
+  console.log(updateBody)
+  if(updateBody.modifierGroup){
+    updateBody.modifierGroup = JSON.parse(updateBody.modifierGroup);
   }
   if (
     updateBody.email &&

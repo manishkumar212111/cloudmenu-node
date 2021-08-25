@@ -12,6 +12,11 @@ const ModifiersDetail = new mongoose.Schema({
 })
 const modifierSchema = mongoose.Schema(
   {
+    restaurant: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Restaurant',
+        required: true, 
+    },
     name : {
         type : String
     }, 
@@ -37,7 +42,7 @@ const modifierSchema = mongoose.Schema(
 
     status : {
         type : Number,
-        default: 0
+        default: 1
     }
   },
   {
