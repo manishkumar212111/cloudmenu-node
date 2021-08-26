@@ -60,6 +60,7 @@ const updateRestaurant = {
       planName: Joi.string(),
       planDetail: Joi.object(),
       name : Joi.string(),
+      nameAr : Joi.string(),
       address: Joi.string(),
       manager_name: Joi.string(),
       email: Joi.string(),
@@ -72,7 +73,13 @@ const updateRestaurant = {
       openingTime: Joi.string(),
       closingTime: Joi.string(),
       city: Joi.string(),
-      state: Joi.string()
+      state: Joi.string(),
+      currency: Joi.string(),
+      taxRate: Joi.string(),
+      taxStatus: Joi.boolean(),
+      noOfTable: Joi.number(),
+      bankDetail: Joi.string(),
+      settings: Joi.string()
     }),
 };
 

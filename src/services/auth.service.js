@@ -48,7 +48,7 @@ const loginUserWithEmailAndPassword = async (email, password, role="user") => {
       throw new ApiError(httpStatus.UNAUTHORIZED, 'Your account is under verification, please contact admin');
     }
 
-    const restaurant =await Restaurant.findOne({user: user.id}).select('status');
+    const restaurant =await Restaurant.findOne({user: user.id}).select('status settings');
     // user.restaurant = restaurant;
     console.log(restaurant)
 

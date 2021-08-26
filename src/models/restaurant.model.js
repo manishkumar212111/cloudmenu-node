@@ -13,6 +13,10 @@ const restaurantSchema = mongoose.Schema(
         type: String,
         default : ""
     },
+    banner_url: {
+        type: String,
+        default : ""
+    },
     description : {
         type : String
     },
@@ -25,11 +29,15 @@ const restaurantSchema = mongoose.Schema(
     planDetail : {
         type: Object,
         default : {
-            // start : "",
-            // expiry : ""
+            start : "",
+            expiry : ""
         }
     }, 
     name: {
+        type : String
+    },
+     
+    nameAr: {
         type : String
     },
     manager_name: {
@@ -49,6 +57,41 @@ const restaurantSchema = mongoose.Schema(
     },
     full_address: {
         type : String
+    },
+    noOfTable:{
+        type: Number
+    },
+    currency: {
+        type: String
+    },
+    taxRate: {
+        type: Number
+    },
+    taxStatus: {
+        type: Boolean
+    },
+    bankDetail: {
+        type:Object,
+        default: {
+            bankName: "",
+            companyName: "",
+            IBAN: ""
+        }
+    },
+    settings:{
+        type: Object,
+        default:{
+            language: "en",
+            digitalPayment: true,
+            takeAwayOrder: false,
+            payment: {
+                cash: true,
+                paymentTerminal: true,
+                creditCard: true,
+                Mada: false,
+                applePay: false
+            }
+        }
     },
     status: {
         type : Number,

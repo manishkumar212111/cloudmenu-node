@@ -57,6 +57,12 @@ const updateRestaurantById = async (restaurantId, updateBody) => {
   if (updateBody.email && (await Restaurant.isEmailTaken(updateBody.email, restaurantId))) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
+  if(updateBody.bankDetail){
+    updateBody.bankDetail = JSON.parse(updateBody.bankDetail);
+  }
+  if(updateBody.settings){
+    updateBody.settings = JSON.parse(updateBody.settings);
+  }
   Object.assign(restaurant, updateBody);
   await restaurant.save();
   return restaurant;
