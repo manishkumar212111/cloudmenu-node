@@ -6,7 +6,8 @@ const { toJSON, paginate } = require('./plugins');
 const categorySchema = mongoose.Schema(
   {
     name : {
-        type : String
+        type : String,
+        unique: true
     },  
     restaurant: {
         type: mongoose.SchemaTypes.ObjectId,

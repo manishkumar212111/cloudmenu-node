@@ -30,54 +30,54 @@ const createProduct = async (productBody, user) => {
  * @param {number} [options.page] - Current page (default = 1)
  * @returns {Promise<QueryResult>}
  */
-const queryProducts = async (filter, options) => {
-  // return await Product.paginate(filter, options , async (option) => {
-  //     return await Product.find(option.filter).populate('user', { email: 1 }).
-  //     sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
-  //   });
-  filter.restaurant = mongoose.Types.ObjectId(filter.restaurant);
-  let products = await Product.aggregate([
-    {
-      $match: filter,
-    },
-    { $sort: { createdDate: -1 } },
-    {
-      $lookup: {
-        from: "categories",
-        localField: "category",
-        foreignField: "_id",
-        as: "categoryDetail",
-      },
-    },
-    {
-      $group: {
-        _id: "$categoryDetail",
-        details: {
-          $push: {
-            id: "$_id",
-            title: "$title",
-            titleAr: "$titleAr",
-            category: "$categoryDetail",
-            description: "$description",
-            descriptionAr: "$descriptionAr",
-            imageUrl: "$imageUrl",
-            sellingPrice: "$sellingPrice",
-            sellingPriceAr: "$sellingPriceAr",
-            modifierGroup: "$modifierGroup",
+const queryProducts = async (filter, options = {}) => {
+  return await Product.paginate(filter, options , async (option) => {
+      return await Product.find(option.filter).populate('category').populate('modifierGroup').
+      sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
+    });
+  // filter.restaurant = mongoose.Types.ObjectId(filter.restaurant);
+  // let products = await Product.aggregate([
+  //   {
+  //     $match: filter,
+  //   },
+  //   { $sort: { createdDate: -1 } },
+  //   {
+  //     $lookup: {
+  //       from: "categories",
+  //       localField: "category",
+  //       foreignField: "_id",
+  //       as: "categoryDetail",
+  //     },
+  //   },
+  //   {
+  //     $group: {
+  //       _id: "$categoryDetail",
+  //       details: {
+  //         $push: {
+  //           id: "$_id",
+  //           title: "$title",
+  //           titleAr: "$titleAr",
+  //           category: "$categoryDetail",
+  //           description: "$description",
+  //           descriptionAr: "$descriptionAr",
+  //           imageUrl: "$imageUrl",
+  //           sellingPrice: "$sellingPrice",
+  //           sellingPriceAr: "$sellingPriceAr",
+  //           modifierGroup: "$modifierGroup",
 
-          },
-        },
-      },
-    },
+  //         },
+  //       },
+  //     },
+  //   },
 
-    {
-      $project: {
-        _id: "$_id",
-        details: "$details",
-      },
-    },
-  ]);
-  return products;
+  //   {
+  //     $project: {
+  //       _id: "$_id",
+  //       details: "$details",
+  //     },
+  //   },
+  // ]);
+  // return products;
 };
 
 /**
