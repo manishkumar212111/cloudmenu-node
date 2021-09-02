@@ -40,7 +40,7 @@ const queryRestaurants = async (filter, options) => {
  * @returns {Promise<Restaurant>}
  */
 const getRestaurantById = async (id) => {
-  return await Restaurant.findById(id);
+  return await Restaurant.findById(id).populate("user");
 };
 
 /**

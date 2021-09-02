@@ -79,7 +79,8 @@ const updateRestaurant = {
       taxStatus: Joi.boolean(),
       noOfTable: Joi.number(),
       bankDetail: Joi.string(),
-      settings: Joi.string()
+      settings: Joi.string(),
+      banner_url: Joi.string()
     }),
 };
 

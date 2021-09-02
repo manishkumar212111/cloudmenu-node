@@ -53,13 +53,16 @@ const updateRestaurant = catchAsync(async (req, res) => {
     body.coverImage = req.files.coverImage[0].path;
   }
 
-  if(req?.files?.logoImage && req?.files?.logoImage[0]){
-    body.logo_url = req.files.logoImage[0].path;
+  if(req?.files?.logoImg && req?.files?.logoImg[0]){
+    body.logo_url = req.files.logoImg[0].path;
   }
-  if(req?.files?.bannerImage && req.files?.bannerImage[0]){
-    body.banner_url = req.files.bannerImage[0].path;
+  if(req?.files?.bannerImg && req.files?.bannerImg[0]){
+    body.banner_url = req.files.bannerImg[0].path;
   }
-
+  if(req.body?.bankDetail){
+    console.log(req.body.bankDetail)
+    // body.bankDetail = JSON.parse(req.body.bankDetail)
+  }
   const restaurant = await restaurantService.updateRestaurantById(req.params.restaurantId, body);
   res.send(restaurant);
 });
