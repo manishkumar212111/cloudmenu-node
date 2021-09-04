@@ -15,7 +15,8 @@ const csvtojson = require("csvtojson");
 const createProduct = async (productBody, user) => {
   productBody.user = user.id;
   if(productBody.modifierGroup){
-    productBody.modifierGroup = JSON.parse(productBody.modifierGroup);
+    console.log(productBody.modifierGroup, typeof productBody.modifierGroup)
+    productBody.modifierGroup = productBody.modifierGroup !== "undefined" ? JSON.parse(productBody.modifierGroup): [];
   }
   const product = await Product.create({ ...productBody });
   return product;
