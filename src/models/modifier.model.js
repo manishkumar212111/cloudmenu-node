@@ -6,6 +6,9 @@ const ModifiersDetail = new mongoose.Schema({
     name: {
         type: String
     },
+    nameAr: {
+        type: String
+    },
     price: {
         type: Number
     }
