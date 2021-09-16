@@ -49,6 +49,9 @@ const userSchema = mongoose.Schema(
       type : String,
       // unique : true
     },
+    otp:{
+      type: Number
+    },
     planName : {
       type: String,
       default: "free"

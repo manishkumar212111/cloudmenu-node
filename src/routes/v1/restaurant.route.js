@@ -29,7 +29,11 @@ router
 
 router
   .route('/user/restaurant')
-  .get(auth('manageRestaurants'), uploadNone.none() , validate(RestaurantValidation.getRestaurant), RestaurantController.getRestaurantByUser)
+  .get(auth('manageRestaurants'), uploadNone.none() , validate(RestaurantValidation.getRestaurant), RestaurantController.subScriptionRequest)
+
+router
+  .route('/user/subscription-request')
+  .post(auth('manageRestaurants') , validate(RestaurantValidation.getRestaurant), RestaurantController.subScriptionRequest)
 
 router
   .route('/:restaurantId')

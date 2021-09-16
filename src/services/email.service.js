@@ -12,6 +12,17 @@ if (config.env !== 'test') {
     .catch(() => logger.warn('Unable to connect to email server. Make sure you have configured the SMTP options in .env'));
 }
 
+const sendSubscriptionEmailToADmin = async (data) => {
+  try{
+    const to="manish.kumar212111@gmail.com";
+    const subject="Subscription request (!Important)";
+    const text = `Restaurant with Name(${data.name}), Mobile(${data.mobile}), Email(${data.email}), Address(${data.full_address}) want to upgrade their plans please review this.`
+    const msg = { from: config.email.from, to, subject, text };
+    await transport.sendMail(msg);
+  } catch(error) {
+    console.log(error);
+  }
+}
 // {
 //   type : "",
 //   data : {},
@@ -83,6 +94,7 @@ const sendOTP = async (to, otp) => {
 
 module.exports = {
   transport,
+  sendSubscriptionEmailToADmin,
   sendEmail,
   sendResetPasswordEmail,
   sendOTP,

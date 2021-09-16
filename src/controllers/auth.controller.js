@@ -41,15 +41,31 @@ const refreshTokens = catchAsync(async (req, res) => {
 });
 
 const forgotPassword = catchAsync(async (req, res) => {
-  const resetPasswordToken = await tokenService.generateResetPasswordToken(req.body.email);
-  // const resetPasswordUrl = `http://localhost:3000/reset-password?token=${resetPasswordToken}`;
-  await emailService.sendResetPasswordEmail(req.body.email, resetPasswordToken);
-  res.send({status : true});
+  if(req.body.email){
+    const resetPasswordToken = await tokenService.generateResetPasswordToken(req.body.email);
+    // const resetPasswordUrl = `http://localhost:3000/reset-password?token=${resetPasswordToken}`;
+    await emailService.sendResetPasswordEmail(req.body.email, resetPasswordToken);
+    res.send({status : true});
+  
+  } else if(req.body.mobile && req.body.ccode){
+    const userId = await tokenService.resetPasswordWithOtp(req.body.ccode, req.body.mobile);
+    res.send({status : true, userId : userId});
+
+  } 
 });
 
 const resetPassword = catchAsync(async (req, res) => {
   await authService.resetPassword(req.body.token, req.body.password);
   res.status(httpStatus.NO_CONTENT).send();
+});
+
+const verifyOtp = catchAsync(async (req, res) => {
+  let result =  await authService.verifyOtp(req.body.otp, req.body.userId);
+  if(!result){
+    res.send({status: false});
+  }
+  const resetPasswordToken = await tokenService.generateResetPasswordToken(result.email);
+  res.send({token : resetPasswordToken});
 });
 
 
@@ -65,5 +81,6 @@ module.exports = {
   refreshTokens,
   forgotPassword,
   resetPassword,
-  googleLogin
+  googleLogin,
+  verifyOtp
 };

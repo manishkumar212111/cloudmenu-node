@@ -4,6 +4,7 @@ const { password, objectId } = require('./custom.validation');
 const createProduct = {
   body: Joi.object().keys({
     category : Joi.custom(objectId).required(),
+    menu : Joi.custom(objectId).required(),
     title : Joi.string(),
     titleAr : Joi.string(),
     description: Joi.string(),
@@ -24,6 +25,7 @@ const getProducts = {
   query: Joi.object().keys({
     sortBy: Joi.string(),
     restaurant : Joi.string().custom(objectId),
+    menu : Joi.string().custom(objectId),
     category : Joi.string().custom(objectId),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -34,7 +36,6 @@ const getProducts = {
 const getProduct = {
   query: Joi.object().keys({
     sortBy: Joi.string(),
-    user_type: Joi.string(),
     category: Joi.string().custom(objectId),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -50,6 +51,7 @@ const updateProduct = {
   }),
   body: Joi.object()
     .keys({
+      menu : Joi.custom(objectId),
       category : Joi.string().custom(objectId),
       title : Joi.string(),
       titleAr : Joi.string(),

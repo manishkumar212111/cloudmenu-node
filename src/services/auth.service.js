@@ -5,7 +5,7 @@ const Token = require('../models/token.model');
 const ApiError = require('../utils/ApiError');
 const { tokenTypes } = require('../config/tokens');
 const config = require("../config/config");
-const { Restaurant } = require('../models');
+const { Restaurant, User } = require('../models');
 /**
  * Login with username and password
  * @param {string} username
@@ -148,11 +148,25 @@ const resetPassword = async (resetPasswordToken, newPassword) => {
   }
 };
 
+const verifyOtp = async (otp, userId) => {
+  try {
+    const user = await User.findOne({_id: userId, otp: otp});
+    if (!user) {
+      throw new Error("Incorrect otp, please try again");
+    }
+    return user;
+  } catch (error) {
+    console.log(error)
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect Otp');
+  }
+};
+
 module.exports = {
   loginUserWithEmailAndPassword,
   logout,
   refreshAuth,
   resetPassword,
   googleLogin,
-  loginUserWithMobileAndPassword
+  loginUserWithMobileAndPassword,
+  verifyOtp
 };

@@ -17,7 +17,7 @@ const createProduct = catchAsync(async (req, res) => {
 });
 
 const getProducts = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['status','restaurant', 'category']);
+  const filter = pick(req.query, ['status','restaurant', 'category', "menu"]);
   const options = pick(req.query, ['limit']);
   options.limit = options.limit? options.limit: 12;
   const result = await productService.queryProducts(filter, options);

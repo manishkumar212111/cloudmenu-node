@@ -77,11 +77,17 @@ const getRestaurantByUser = catchAsync(async (req, res) => {
   res.send(await restaurantService.getRestaurantByUser(req.user.id));
 
 })
+
+const subScriptionRequest = catchAsync(async (req, res) => {
+  res.send(await restaurantService.subScriptionRequest(req.user.id));
+})
+
 module.exports = {
   createRestaurant,
   getRestaurants,
   getRestaurant,
   updateRestaurant,
   deleteRestaurant,
-  getRestaurantByUser
+  getRestaurantByUser,
+  subScriptionRequest
 };

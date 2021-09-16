@@ -4,6 +4,10 @@ const { toJSON, paginate } = require('./plugins');
 
 const restaurantSchema = mongoose.Schema(
   {
+    menu: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Menu'
+    }, 
     title: {
       type: String,
       trim: true,

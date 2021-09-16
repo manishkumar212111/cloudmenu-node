@@ -12,7 +12,7 @@ const createCategory = catchAsync(async (req, res) => {
 });
 
 const getCategorys = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['status',"name", 'role', 'restaurant']);
+  const filter = pick(req.query, ['status',"name", 'role', 'restaurant', "menu"]);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   options.limit = options.limit ? options.limit : 500;
   const result = await categoryService.queryCategorys(filter, options);

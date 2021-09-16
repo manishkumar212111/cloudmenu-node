@@ -33,7 +33,7 @@ const createProduct = async (productBody, user) => {
  */
 const queryProducts = async (filter, options = {}) => {
   return await Product.paginate(filter, options , async (option) => {
-      return await Product.find(option.filter).populate('category').populate('modifierGroup').
+      return await Product.find(option.filter).populate('category').
       sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
     });
   // filter.restaurant = mongoose.Types.ObjectId(filter.restaurant);

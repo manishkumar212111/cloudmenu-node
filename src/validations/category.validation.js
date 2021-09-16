@@ -4,7 +4,7 @@ const { objectId } = require('./custom.validation');
 const createCategory = {
   body: Joi.object().keys({
     name : Joi.string().required(),
-    // restaurant : Joi.string().custom(objectId).required(),
+    menu : Joi.string().custom(objectId).required(),
   }),
 };
 
@@ -13,6 +13,7 @@ const getCategorys = {
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
+    menu : Joi.string().custom(objectId),
     restaurant: Joi.custom(objectId)
   }),
 };

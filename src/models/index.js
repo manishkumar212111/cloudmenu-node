@@ -10,6 +10,7 @@ module.exports.Cms = require('./cms.model');
 module.exports.Enquiry = require('./enquiry.model');
 module.exports.Qr = require('./qr.model');
 module.exports.Modifier = require('./modifier.model');
+module.exports.Menu = require('./menu.model');
 
 
 

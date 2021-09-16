@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 const { Restaurant} = require('../models');
 // const Moment = require('moment')
 const ApiError = require('../utils/ApiError');
-// const { sendOTP  } = require('../services/email.service');
+const { sendSubscriptionEmailToADmin  } = require('../services/email.service');
 
 
 /**
@@ -91,11 +91,31 @@ const getRestaurantByUser = async (userId) => {
   }
   return restaurant;
 }
+
+const subScriptionRequest = async (userId) => {
+  const restaurant = await Restaurant.findOne({
+    user : userId
+  })
+  if(!restaurant){
+    throw new ApiError(httpStatus.NOT_FOUND, 'Restaurant not found');
+  }
+  // send email to admin regarding subscription request for user
+  let obj = {
+    email : restaurant.email,
+    mobile : restaurant.ccode + restaurant.mobile,
+    name : restaurant.name,
+    full_address: restaurant.full_address
+  }
+
+  await sendSubscriptionEmailToADmin(obj)
+  return true;
+}
 module.exports = {
   createRestaurant,
   queryRestaurants,
   getRestaurantById,
   updateRestaurantById,
   deleteRestaurantById,
-  getRestaurantByUser
+  getRestaurantByUser,
+  subScriptionRequest
 };

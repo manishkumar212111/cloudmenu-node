@@ -11,6 +11,7 @@ const enquiryRoute = require('./enquiry.route');
 const orderRoute = require('./order.route');
 const commonRoute = require('./common.route');
 const modifierRoute = require('./modifier.route');
+const menuRoute = require('./menu.route');
 
 
 
@@ -28,6 +29,7 @@ router.use(['/enquiry'], enquiryRoute);
 router.use(['/order'], orderRoute);
 router.use(['/common'], commonRoute);
 router.use(['/modifiers', '/modifier'], modifierRoute);
+router.use(['/menu', '/menus'], menuRoute);
 
 
 

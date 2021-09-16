@@ -19,6 +19,11 @@ const productSchema = mongoose.Schema(
       ref: 'Category',
       required: true,  
     },
+    menu: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Menu',
+      required: true,  
+    },
     title: {
       type : String
     },
@@ -58,13 +63,7 @@ const productSchema = mongoose.Schema(
       type : Number
     },
     modifierGroup: [{
-      value : {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Modifier'
-      },
-      label: {
-        type: String
-      }
+      type: Object
     }]
   },
   {

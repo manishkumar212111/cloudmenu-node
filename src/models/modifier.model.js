@@ -11,8 +11,13 @@ const ModifiersDetail = new mongoose.Schema({
     },
     price: {
         type: Number
+    },
+    status: {
+        type: Boolean,
+        default: true
     }
-})
+});
+
 const modifierSchema = mongoose.Schema(
   {
     restaurant: {

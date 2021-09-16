@@ -66,6 +66,7 @@ const updateRestaurant = {
       email: Joi.string(),
       mobile: Joi.string(),
       ccode : Joi.string(),
+      menu: Joi.string().custom(objectId),
       documents: Joi.array(),
       full_address: Joi.string(),
       status: Joi.number(),

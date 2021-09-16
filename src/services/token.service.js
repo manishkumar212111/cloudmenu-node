@@ -3,8 +3,9 @@ const moment = require('moment');
 const httpStatus = require('http-status');
 const config = require('../config/config');
 const userService = require('./user.service');
-const { Token } = require('../models');
+const { Token, User } = require('../models');
 const ApiError = require('../utils/ApiError');
+const SendSms = require('../utils/SendSms');
 const { tokenTypes } = require('../config/tokens');
 
 /**
@@ -101,10 +102,27 @@ const generateResetPasswordToken = async (email) => {
   return resetPasswordToken;
 };
 
+/**
+ * Generate reset password token
+ * @param {string} email
+ * @returns {Promise<string>}
+ */
+ const resetPasswordWithOtp = async (ccode , mobile) => {
+  let user = await User.findOne({ccode: ccode , mobile: mobile});
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'No users found with this mobile number');
+  }
+  const otp = Math.floor(1000 + Math.random() * 9000);
+  await SendSms(ccode+mobile, `Pin Code is: ${otp}`);
+  user.otp = otp;
+  user.save();
+  return user.id;
+};
 module.exports = {
   generateToken,
   saveToken,
   verifyToken,
   generateAuthTokens,
   generateResetPasswordToken,
+  resetPasswordWithOtp
 };

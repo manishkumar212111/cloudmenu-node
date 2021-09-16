@@ -27,6 +27,9 @@ roleRights.set(roles[0], [
 
   'manageModifiers',
   'getModifiers',
+
+  'manageMenus',
+  'getMenus',
   
 ]);
 
@@ -57,6 +60,10 @@ roleRights.set(roles[1], [
 
   'manageModifiers',
   'getModifiers',
+
+
+  'manageMenus',
+  'getMenus',
 ]);
 
 
