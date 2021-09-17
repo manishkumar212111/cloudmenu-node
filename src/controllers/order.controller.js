@@ -11,7 +11,7 @@ const createOrder = catchAsync(async (req, res) => {
 });
 
 const getOrders = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['status', 'role', 'restaurant', 'category']);
+  const filter = pick(req.query, ['status', 'role', 'restaurant']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   options.limit = options.limit ? options.limit : 500;
   const result = await orderService.queryOrders(filter, options);

@@ -15,6 +15,9 @@ const csvtojson = require("csvtojson");
 const createMenu = async (menuBody, user) => {
   menuBody.user = user.id;
   let menuList = await Menu.findOne({ restaurant :menuBody.restaurant  });
+  if(menuBody.settings){
+    menuBody.settings = JSON.parse(menuBody.settings);
+  }
   let menu = new Menu(menuBody);  
   console.log(menuList, menu, menuBody.restaurant)
   if(!(menuList && menuList.name)){
@@ -37,7 +40,7 @@ const createMenu = async (menuBody, user) => {
 const queryMenus = async (filter, options = {}) => {
   return await Menu.paginate(filter, options , async (option) => {
       return await Menu.find(option.filter).populate('restaurant', "menu").
-      sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
+      sort(option.sort).skip(option.skip).limit(option.limit).exec()
     });
   // filter.restaurant = mongoose.Types.ObjectId(filter.restaurant);
   // let menus = await Menu.aggregate([
@@ -108,11 +111,8 @@ const updateMenuById = async (menuId, updateBody) => {
   if(updateBody.modifierGroup){
     updateBody.modifierGroup = JSON.parse(updateBody.modifierGroup);
   }
-  if (
-    updateBody.email &&
-    (await Menu.isEmailTaken(updateBody.email, menuId))
-  ) {
-    throw new ApiError(httpStatus.BAD_REQUEST, "Email already taken");
+  if(updateBody.settings){
+    updateBody.settings = JSON.parse(updateBody.settings);
   }
   Object.assign(menu, updateBody);
   await menu.save();

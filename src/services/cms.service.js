@@ -28,7 +28,7 @@ const createCms = async (cmsBody , user) => {
 const queryCmss = async (filter, options) => {
     return await Cms.paginate(filter, options , async (option) => {
         return await Cms.find(option.filter).populate('user', { email: 1 }).
-        sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
+        sort(option.sort).skip(option.skip).limit(option.limit).exec()
       });
 //   const cmss = await Cms.paginate(filter, options);
 //   return cmss;

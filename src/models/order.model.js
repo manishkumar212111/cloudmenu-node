@@ -9,47 +9,43 @@ const orderSchema = mongoose.Schema(
       ref: 'Restaurant',
       required: true,  
     },
-    products: [{
-        productId : {
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: 'Product',
-            required: true,  
-        },
-        quantity: {
-            type : Number,
-            default: 1
-        },
-        listingPrice: {
-            type : Number
-        },
-        sellingPrice: {
-            type : Number
-        },
-        comments: {
-            type : String
-        }
-    }],
+    products: {
+      type: Object,
+      default: {}
+    },
     status : {
-        type : Number,
-        default : 1
+        type : String,
+        default : "Pending"
     },
-    currency: {
-      type: String
+    orderNo:{
+      type: Number,
+      required: true
     },
-    totalListingPrice : {
-      type : Number
-    },
-    totalSellingPrice : {
-      type : Number
+    subTotalAmount: {
+      type: Number
     },
     tax : {
       type : Number
     },
-    paymentStatus: {
-        type : String
+    totalAmount: {
+        type : Number
     },
-    taxnId: {
-        type : String
+    orderType: {
+      type : String
+    },
+    tableNo: {
+      type : String
+    },
+    orderNote: {
+      type : String
+    },
+    paymentType: {
+      type: String,
+      default: "online"
+    },
+    paymentStatus: {
+      type : String,
+      default: "pending"
     }
   },
   {

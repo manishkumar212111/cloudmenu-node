@@ -10,6 +10,7 @@ module.exports.cmsService = require('./cms.service');
 module.exports.enquiryService = require('./enquiry.service');
 module.exports.modifierService = require('./modifier.service');
 module.exports.menuService = require('./menu.service');
+module.exports.orderService = require('./order.service');
 
 
 

@@ -28,7 +28,7 @@ const createQr = async (qrBody , user) => {
 const queryQrs = async (filter, options) => {
     return await Qr.paginate(filter, options , async (option) => {
         return await Qr.find(option.filter).populate('user', { email: 1 }).
-        sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
+        sort(option.sort).skip(option.skip).limit(option.limit).exec()
       });
 //   const qrs = await Qr.paginate(filter, options);
 //   return qrs;

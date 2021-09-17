@@ -12,7 +12,8 @@ const ApiError = require('../utils/ApiError');
  */
 const createOrder = async (orderBody , user) => {
 //   orderBody.user = user.id;
-  const order = await Order.create({ ...orderBody });
+  let count = await Order.find({ restaurant : orderBody.restaurant});
+  const order = await Order.create({ ...orderBody, orderNo : count.length +1 });
   return order;
 };
 
@@ -28,7 +29,7 @@ const createOrder = async (orderBody , user) => {
 const queryOrders = async (filter, options) => {
     return await Order.paginate(filter, options , async (option) => {
         return await Order.find(option.filter).populate('user', { email: 1 }).
-        sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
+        sort(option.sort).skip(option.skip).limit(option.limit).exec()
       });
 //   const orders = await Order.paginate(filter, options);
 //   return orders;

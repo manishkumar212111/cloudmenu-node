@@ -62,6 +62,9 @@ const productSchema = mongoose.Schema(
     discount : {
       type : Number
     },
+    calorie: {
+      type : Number
+    },
     modifierGroup: [{
       type: Object
     }]

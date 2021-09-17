@@ -5,6 +5,7 @@ const createMenu = {
   body: Joi.object().keys({
     name : Joi.string().required(),
     bannerImage: Joi.string(),
+    settings: Joi.string(),
   }),
 };
 
@@ -13,6 +14,7 @@ const getMenus = {
     sortBy: Joi.string(),
     restaurant : Joi.string().custom(objectId),
     limit: Joi.number().integer(),
+    settings: Joi.string(),
     page: Joi.number().integer(),
   }),
 };

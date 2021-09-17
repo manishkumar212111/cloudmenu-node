@@ -27,7 +27,7 @@ const createEnquiry = async (enquiryBody , user) => {
 const queryEnquirys = async (filter, options) => {
     return await Enquiry.paginate(filter, options , async (option) => {
         return await Enquiry.find(option.filter).populate('user', { email: 1 }).
-        sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
+        sort(option.sort).skip(option.skip).limit(option.limit).exec()
       });
 //   const enquirys = await Enquiry.paginate(filter, options);
 //   return enquirys;

@@ -19,7 +19,22 @@ const menuSchema = mongoose.Schema(
     },
     coverImage: {
         type: String
-    }
+    },
+    settings:{
+      type: Object,
+      default:{
+            language: "en",
+            digitalPayment: true,
+            takeAwayOrder: false,
+            payment: {
+                cash: true,
+                paymentTerminal: true,
+                creditCard: true,
+                Mada: false,
+                applePay: false
+            }
+        }
+    },
   },
   {
     timestamps: true,

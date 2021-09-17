@@ -28,7 +28,7 @@ const createRestaurant = async (restaurantBody , user) => {
 const queryRestaurants = async (filter, options) => {
     return await Restaurant.paginate(filter, options , async (option) => {
         return await Restaurant.find(option.filter).populate('user', { email: 1 }).
-        sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
+        sort(option.sort).skip(option.skip).limit(option.limit).exec()
       });
 //   const restaurants = await Restaurant.paginate(filter, options);
 //   return restaurants;

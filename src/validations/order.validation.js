@@ -3,15 +3,23 @@ const { objectId } = require('./custom.validation');
 
 const createOrder = {
   body: Joi.object().keys({
-    products : Joi.array().required(),
+    products : Joi.object().required(),
     restaurant : Joi.string().custom(objectId).required(),
-    currency : Joi.string(),
-
+    status : Joi.string(),
+    subTotalAmount: Joi.number(),
+    tax: Joi.number(),
+    totalAmount: Joi.number(),
+    orderType: Joi.string(),
+    orderNote: Joi.string(),
+    paymentType: Joi.string(),
+    paymentStatus: Joi.string(),
+    tableNo: Joi.string()
   }),
 };
 
 const getOrders = {
   query: Joi.object().keys({
+    status: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -32,13 +40,21 @@ const getOrder = {
 
 const updateOrder = {
   params: Joi.object().keys({
-    products : Joi.array().required(),
-    restaurant : Joi.string().custom(objectId).required(),
-    currency : Joi.string(),
+    orderId: Joi.string().custom(objectId)
   }),
   body: Joi.object()
     .keys({
-        name : Joi.string()    
+      products : Joi.object(),
+      restaurant : Joi.string().custom(objectId),
+      status : Joi.string(),
+      subTotalAmount: Joi.number(),
+      tax: Joi.number(),
+      totalAmount: Joi.number(),
+      orderType: Joi.string(),
+      orderNote: Joi.string(),
+      paymentType: Joi.string(),
+      paymentStatus: Joi.string(),
+      tableNo: Joi.string()
     }),
 };
 

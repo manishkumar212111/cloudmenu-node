@@ -31,7 +31,7 @@ const queryModifiers = async (filter, options) => {
     }
     return await Modifier.paginate(filter, options , async (option) => {
         return await Modifier.find(option.filter).populate('user', { email: 1 }).
-        sort({createdAt : -1}).skip(option.skip).limit(option.limit).exec()
+        sort(option.sort).skip(option.skip).limit(option.limit).exec()
       });
 //   const modifiers = await Modifier.paginate(filter, options);
 //   return modifiers;

@@ -11,6 +11,8 @@ const categoryController = require('../../controllers/category.controller');
 
 const restaurantValidation = require('../../validations/restaurant.validation');
 const restaurantController = require('../../controllers/restaurant.controller');
+const orderValidation = require('../../validations/order.validation');
+const orderController = require('../../controllers/order.controller');
 
 const router = express.Router();
 
@@ -18,5 +20,6 @@ router.post('/enquiry', validate(enquiryValidation.createEnquiry), enquiryContro
 router.get('/product', validate(productValidation.getProducts), productController.getProducts);
 router.get('/category', validate(categoryValidation.getCategorys), categoryController.getCategorys);
 router.get('/restaurant/:restaurantId', validate(restaurantValidation.getRestaurant), restaurantController.getRestaurant);
+router.post('/order', validate(orderValidation), orderController.createOrder);
 
 module.exports = router;
