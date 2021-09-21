@@ -30,7 +30,7 @@ const menuSchema = mongoose.Schema(
                 cash: true,
                 paymentTerminal: true,
                 creditCard: true,
-                Mada: false,
+                mada: false,
                 applePay: false
             }
         }

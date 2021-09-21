@@ -56,6 +56,10 @@ const getProductsByUser = catchAsync(async (req, res) => {
   // });
 });
 
+const getAnalytics = catchAsync(async (req, res) => {
+  let result = await productService.getAnalytics(req.query);
+  res.send({ result });
+});
 
 module.exports = {
   createProduct,
@@ -63,5 +67,6 @@ module.exports = {
   getProduct,
   updateProduct,
   deleteProduct,
+  getAnalytics
   // getProductsByUser,
 };

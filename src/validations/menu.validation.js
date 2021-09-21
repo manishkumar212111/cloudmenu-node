@@ -38,6 +38,7 @@ const updateMenu = {
     .keys({
         name : Joi.string(),
         bannerImage: Joi.string(),
+        settings: Joi.string()
     }),
 };
 

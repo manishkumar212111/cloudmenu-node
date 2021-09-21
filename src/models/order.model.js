@@ -13,6 +13,12 @@ const orderSchema = mongoose.Schema(
       type: Object,
       default: {}
     },
+    // "Pending"
+    // "Preparing"
+    // "Serving"
+    // "Complete" 
+    // "Cancelled" 
+
     status : {
         type : String,
         default : "Pending"

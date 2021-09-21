@@ -3,12 +3,13 @@ const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { menuService, restaurantService } = require('../services');
+const config = require('../config/config');
 require("dotenv").config();
 
 const createMenu = catchAsync(async (req, res) => {
   let body = req.body;
   if(req.files.coverImage && req.files.coverImage[0]){
-    body.coverImage = req.files.coverImage[0].path;
+    body.bannerImage = config.BASE_URL + req.files.coverImage[0].path;
   }
   const resturant = await restaurantService.getRestaurantByUser(req.user.id);
   body.restaurant = resturant.id;

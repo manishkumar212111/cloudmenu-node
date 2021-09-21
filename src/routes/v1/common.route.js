@@ -18,8 +18,10 @@ const router = express.Router();
 
 router.post('/enquiry', validate(enquiryValidation.createEnquiry), enquiryController.createEnquiry);
 router.get('/product', validate(productValidation.getProducts), productController.getProducts);
+router.get('/dashboard', validate(productValidation.getProducts), productController.getAnalytics);
 router.get('/category', validate(categoryValidation.getCategorys), categoryController.getCategorys);
 router.get('/restaurant/:restaurantId', validate(restaurantValidation.getRestaurant), restaurantController.getRestaurant);
-router.post('/order', validate(orderValidation), orderController.createOrder);
+router.post('/order', validate(orderValidation.createOrder), orderController.createOrder);
+router.put('/order/:orderId', validate(orderValidation.updateOrder), orderController.updateOrder);
 
 module.exports = router;

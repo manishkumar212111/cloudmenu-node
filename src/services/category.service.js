@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { Category, Restaurant} = require('../models');
+const { Category, Restaurant, Product} = require('../models');
 // const Moment = require('moment')
 const ApiError = require('../utils/ApiError');
 // const { sendOTP  } = require('../services/email.service');
@@ -81,8 +81,9 @@ const deleteCategoryById = async (categoryId) => {
   if (!category) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Category not found');
   }
+  let product = await Product.deleteMany({ category : categoryId })
   await category.remove();
-  return category;
+  return product;
 };
 
 const getCategoryByUser = async (userId) => {

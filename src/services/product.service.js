@@ -1,5 +1,5 @@
 const httpStatus = require("http-status");
-const { Product, User, Basic_info } = require("../models");
+const { Product, User, Basic_info, Order } = require("../models");
 const Moment = require("moment");
 const ApiError = require("../utils/ApiError");
 const { sendOTP } = require("../services/email.service");
@@ -203,93 +203,50 @@ const getProductsByUserName = async (userName, category) => {
   return await Product.find(filter);
 };
 
-const uploadCsv = async (userId, file) => {
-  let obj = [];
-  await csvtojson()
-    .fromFile(file.path)
-    .then(async (csvRow, cb) => {
-      let h = [];
-      csvRow.forEach((itm) => {
-        h.push({
-          user: userId,
-          brandName: itm.brandName,
-          productName: itm.productName,
-          productDescription: itm["Product Description"],
-          productType: itm["Product Type"],
-          category: itm.Category,
-          imgUrl: itm["Image url"],
-          price: itm.Price,
-          user_type: "admin",
-          sold_at: itm["Sold at"],
-          weight: itm["Weight (lbs)"],
-        });
-      });
-      let products = await Product.insertMany(h);
-      let stripeData = [];
-      products.forEach((product) => {
-        stripeData.push({
-          productId: product.id,
-          name: product.productName,
-          description: product.productDescription,
-          length: 1,
-          width: 1,
-          height: 1,
-          distanceUnit: "in",
-          weight: product.weight ? product.weight : 1,
-          massUnit: "lb",
-          brand: product.brandName,
-          category: product.category,
-          images: [product.imgUrl],
-          currency: "USD",
-          amount: product.price * 100,
-        });
-      });
-      stripeService.bulkCreate({ products: stripeData }, (response) => {
-        console.log("Bulk upload stripe", response.data);
-      });
-      return h;
-    })
-    .catch((error) => {
-      console.log(error);
-      throw new ApiError(
-        httpStatus.INTERNAL_SERVER_ERROR,
-        "something wnet wrong"
-      );
-    });
-
-  return obj;
-};
-
-const addToStore = async (userId, product, productId) => {
-  const products = await Product.find({
-    user: userId,
-    originalProductId: productId,
-  });
-  if (products && products.length) {
-    throw new ApiError(
-      httpStatus.INTERNAL_SERVER_ERROR,
-      "This product is already added in user account"
-    );
-  } else {
-    let createObj = {
-      brandName: product.brandName,
-      category: product.category,
-      productName: product.productName,
-      productDescription: product.productDescription,
-      price: product.price,
-      imgUrl: product.imgUrl,
-      imageType: product.imgUrl,
-      promoCode: product.promoCode,
-      url: product.url,
-      originalProductId: productId,
-      sold_at: product.sold_at,
-      weight: product.weight,
-      user: userId,
-    };
-    product = await Product.create(createObj);
-    return product;
+const getAnalytics = async (filter) => {
+  console.log(filter)
+  if(filter?.restaurant){
+    filter.restaurant = mongoose.Types.ObjectId(filter?.restaurant); 
   }
-};
+  var d = new Date();
+  d.setDate(d.getDate()-7);
+  let result = await Order.aggregate([
+    {
+      $match: {
+        createdAt: { $gte: new Date(d) },
+        status: "Complete",
+        ...filter
+      }
+    }
+  ]);
+  console.log(result, "jjhjhkj", filter);
+  // calculate total Order in week
+  let resultObj = {
+    todayOrder: 0,
+    todayRevenue: 0,
+    totalOrder: 0,
+    totalRevenue: 0,
+    orderInWeek: {},
+    revenueInWeek: {}
+  } 
+
+  result && result.map(itm => {
+    let date = new Date(itm.createdAt).getDate() + "-" + (new Date(itm.createdAt).getMonth() +1)+ "-" + new Date(itm.createdAt).getFullYear() 
+    if(Moment(itm.createdAt).format("MMDDYYYY") == Moment().format("MMDDYYYY")){
+      resultObj.todayOrder += 1;
+      resultObj.todayRevenue += parseFloat(itm.totalAmount);
+        
+    }
+    resultObj.totalOrder += 1;
+    resultObj.totalRevenue += parseFloat(itm.totalAmount);
+    resultObj.orderInWeek[date] = (resultObj.orderInWeek[date] || 0) + 1 
+    resultObj.revenueInWeek[date] = (resultObj.revenueInWeek[date] || 0) + parseFloat(itm.totalAmount) 
+  })
+
+  return resultObj;
+}
+
+
 module.exports = {
   createProduct,
   queryProducts,
@@ -300,6 +257,5 @@ module.exports = {
   addUserInfo,
   getuserInfo,
   getProductsByUserName,
-  uploadCsv,
-  addToStore,
+  getAnalytics
 };
