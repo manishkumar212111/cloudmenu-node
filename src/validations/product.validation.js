@@ -30,7 +30,9 @@ const getProducts = {
     category : Joi.string().custom(objectId),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
-    user: Joi.custom(objectId)
+    user: Joi.custom(objectId),
+    from : Joi.string(),
+    to : Joi.string(),
   }),
 };
 

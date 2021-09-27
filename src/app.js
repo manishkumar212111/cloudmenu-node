@@ -12,13 +12,16 @@ const { jwtStrategy } = require('./config/passport');
 const { authLimiter } = require('./middlewares/rateLimiter');
 const routes = require('./routes/v1');
 
+const dotenv = require('dotenv')
+dotenv.config()
+
+
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
 
-const removeInActiveUser  = require("./config/cron")
 const app = express();
 
-removeInActiveUser();
+
 
 if (config.env !== 'test') {
   app.use(morgan.successHandler);
@@ -28,6 +31,7 @@ if (config.env !== 'test') {
 
 // app.use(fileUpload());
 var bodyParser = require('body-parser');
+const { User } = require('./models');
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
@@ -59,6 +63,26 @@ passport.use('jwt', jwtStrategy);
 if (config.env === 'production') {
   app.use('/api/auth', authLimiter);
 }
+
+app.post('/notifications/subscribe/:id', async (req, res) => {
+  const subscription = req.body
+  console.log(subscription , req.params)
+
+  await User.findByIdAndUpdate(req.params.id , {
+    subscriptionData: JSON.stringify(subscription)
+  });
+  // const payload = JSON.stringify({
+  //   title: 'Hello!',
+  //   body: 'It works.',
+  // })
+
+  // webpush.sendNotification(subscription, payload)
+  //   .then(result => console.log(result))
+  //   .catch(e => console.log(e.stack))
+
+  res.status(200).json({'success': true})
+});
+
 
 app.use('/uploads', express.static('uploads'));
 

@@ -73,6 +73,9 @@ const userSchema = mongoose.Schema(
     gender: {
       type : String
     },
+    subscriptionData:{
+      type: String
+    },
     avatar: {
       type: String
     }

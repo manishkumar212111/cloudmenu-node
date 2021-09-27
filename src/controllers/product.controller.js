@@ -61,12 +61,20 @@ const getAnalytics = catchAsync(async (req, res) => {
   res.send({ result });
 });
 
+const getAnalyticsByDate = catchAsync(async (req, res) => {
+  const options = pick(req.query, ['limit', 'page']);
+  
+  let result = await productService.getAnalyticsByDate(req.query, options);
+  res.send(result);
+});
+
 module.exports = {
   createProduct,
   getProducts,
   getProduct,
   updateProduct,
   deleteProduct,
-  getAnalytics
+  getAnalytics,
+  getAnalyticsByDate
   // getProductsByUser,
 };

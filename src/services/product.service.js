@@ -246,6 +246,60 @@ const getAnalytics = async (filter) => {
   return resultObj;
 }
 
+const getAnalyticsByDate = async (filter, options={}) => {
+  console.log(filter)
+  
+  let match = {
+    status: "Complete" 
+  }
+  if(filter?.restaurant){
+    match['restaurant'] = mongoose.Types.ObjectId(filter?.restaurant); 
+  }
+  if(filter.from && filter.to){
+    match['createdAt']= { $gte: new Date(filter.from) , $lte : new Date(filter.to)}
+  }
+
+
+  console.log(match)
+  let result = await Order.aggregate([
+    {
+      $match: match
+    }
+  ]);
+  // calculate total Order in week
+  let resultObj = {
+    totalOrder: 0,
+    totalRevenue: 0
+  } 
+
+  result && result.map(itm => {
+    resultObj.totalOrder += 1;
+    resultObj.totalRevenue += parseFloat(itm.totalAmount);
+  })
+
+  result= await Order.paginate(match, options , async (option) => {
+    return await Order.aggregate([
+      {
+        $match: match
+      },
+      {
+        $sort: {createdAt: -1}
+      },
+      {
+        $skip: option.skip
+      },
+      {
+        $limit: option.limit
+      }
+    ]);
+    
+    
+    // await Product.find(option.filter).populate('category').
+    // sort(option.sort).skip(option.skip).limit(option.limit).exec()
+  });
+  return {analytics:  resultObj, orders: result};
+}
+
 
 module.exports = {
   createProduct,
@@ -257,5 +311,6 @@ module.exports = {
   addUserInfo,
   getuserInfo,
   getProductsByUserName,
-  getAnalytics
+  getAnalytics,
+  getAnalyticsByDate
 };

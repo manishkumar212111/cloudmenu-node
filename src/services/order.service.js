@@ -1,9 +1,14 @@
 const httpStatus = require('http-status');
-const { Order} = require('../models');
+const { Order, User, Restaurant} = require('../models');
 // const Moment = require('moment')
 const ApiError = require('../utils/ApiError');
 // const { sendOTP  } = require('../services/email.service');
 
+const dotenv = require('dotenv')
+dotenv.config()
+
+const webpush = require('web-push')
+webpush.setVapidDetails(process.env.WEB_PUSH_CONTACT, process.env.PUBLIC_VAPID_KEY, process.env.PRIVATE_VAPID_KEY)
 
 /**
  * Create a order
@@ -14,6 +19,19 @@ const createOrder = async (orderBody , user) => {
 //   orderBody.user = user.id;
   let count = await Order.find({ restaurant : orderBody.restaurant});
   const order = await Order.create({ ...orderBody, orderNo : count.length +1 });
+
+  let userData = await Restaurant.findById(orderBody.restaurant).populate("user");
+  console.log(userData);
+  if(userData && userData?.user?.subscriptionData){
+    const payload = JSON.stringify({
+      title: 'New Order',
+      body: 'You have new order with id '+ count.length +1,
+    })
+  
+    await webpush.sendNotification(JSON.parse(userData?.user?.subscriptionData), payload)
+  
+  }
+  
   return order;
 };
 

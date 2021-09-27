@@ -71,6 +71,7 @@
     "requests": "^0.3.0",
     "stripe": "^8.141.0",
     "validator": "^13.0.0",
+    "web-push": "^3.4.5",
     "winston": "^3.2.1",
     "xss-clean": "^0.1.1"
   },

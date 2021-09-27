@@ -37,13 +37,17 @@ const orderSchema = mongoose.Schema(
         type : Number
     },
     orderType: {
-      type : String
+      type : String,
+      default: ""
+
     },
     tableNo: {
-      type : String
+      type : String,
+      default: ""
     },
     orderNote: {
-      type : String
+      type : String,
+      default: ""
     },
     paymentType: {
       type: String,
