@@ -2,6 +2,19 @@ const mongoose = require('mongoose');
 
 const { toJSON, paginate } = require('./plugins');
 
+const modifierSchema = new mongoose.Schema({
+  id: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'Modifier'  
+  },
+  modifiers: [{
+    type: Object
+  }],
+  name: {
+    type:String
+  }
+});
+
 const productSchema = mongoose.Schema(
   {
     // user: {
@@ -66,7 +79,7 @@ const productSchema = mongoose.Schema(
       type : Number
     },
     modifierGroup: [{
-      type: Object
+      type: modifierSchema
     }]
   },
   {

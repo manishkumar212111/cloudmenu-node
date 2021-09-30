@@ -42,7 +42,7 @@ const modifierSchema = mongoose.Schema(
     },
     max: {
         type: Number,
-        default: 100
+        default: 1
     },  
     modifiers: [{
         type: ModifiersDetail 
