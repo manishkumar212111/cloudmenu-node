@@ -8,7 +8,9 @@ const createModifier = {
     min : Joi.number(),
     max : Joi.number(),
     isRequired : Joi.boolean(),
-    modifiers : Joi.array()
+    modifiers : Joi.array(),
+    menu: Joi.custom(objectId)
+
   }),
 };
 
@@ -18,7 +20,8 @@ const getModifiers = {
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
     name: Joi.string(),
-    restaurant: Joi.custom(objectId)
+    restaurant: Joi.custom(objectId),
+    menu: Joi.custom(objectId)
   }),
 };
 
@@ -42,6 +45,7 @@ const updateModifier = {
     .keys({
       name : Joi.string(),
       nameAr : Joi.string(),
+      menu: Joi.custom(objectId),
       min : Joi.number(),
       max : Joi.number(),
       isRequired : Joi.boolean(),

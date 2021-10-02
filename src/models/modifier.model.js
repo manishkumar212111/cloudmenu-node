@@ -31,6 +31,11 @@ const modifierSchema = mongoose.Schema(
     nameAr : {
         type : String
     },
+    menu: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Menu',
+        
+    },
     min : {
         type: Number,
         default: 1

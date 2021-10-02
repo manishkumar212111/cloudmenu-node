@@ -15,7 +15,7 @@ const createModifier = catchAsync(async (req, res) => {
 });
 
 const getModifiers = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['status', 'name', 'restaurant', 'category']);
+  const filter = pick(req.query, ['status', 'name', 'restaurant', 'category', 'menu']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   options.limit = options.limit ? options.limit : 500;
   options.page = options.page ? options.page : 1;
