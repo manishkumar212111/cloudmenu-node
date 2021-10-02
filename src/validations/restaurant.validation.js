@@ -10,6 +10,8 @@ const createRestaurant = {
     planName: Joi.string(),
     planDetail: Joi.object(),
     name : Joi.string(),
+    nameAr : Joi.string(),
+    noOfTable: Joi.number(),
     manager_name: Joi.string(),
     email: Joi.string(),
     mobile: Joi.string(),
