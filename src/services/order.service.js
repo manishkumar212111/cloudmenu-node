@@ -25,7 +25,7 @@ const createOrder = async (orderBody , user) => {
   if(userData && userData?.user?.subscriptionData){
     const payload = JSON.stringify({
       title: 'New Order',
-      body: 'You have new order with id '+ count.length +1,
+      body: 'You have new order with id '+ order.orderNo,
     })
   
     await webpush.sendNotification(JSON.parse(userData?.user?.subscriptionData), payload)
