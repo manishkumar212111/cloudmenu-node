@@ -1,5 +1,5 @@
 const httpStatus = require("http-status");
-const { Menu, User, Basic_info, Restaurant } = require("../models");
+const { Menu, User, Basic_info, Restaurant, Product, Category, Modifier } = require("../models");
 const Moment = require("moment");
 const ApiError = require("../utils/ApiError");
 const { sendOTP } = require("../services/email.service");
@@ -130,6 +130,10 @@ const deleteMenuById = async (menuId) => {
     throw new ApiError(httpStatus.NOT_FOUND, "Menu not found");
   }
   await menu.remove();
+  await Category.deleteMany({ menu: menuId});
+  await Modifier.deleteMany({ menu: menuId});
+  await Product.deleteMany({ menu: menuId});
+  
   return menu;
 };
 module.exports = {
