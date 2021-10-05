@@ -3,7 +3,7 @@ node_modules
 
 /uploads
 upload
-.env
+# .env
 /node_modules
 
 
