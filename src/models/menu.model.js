@@ -45,6 +45,10 @@ const menuSchema = mongoose.Schema(
 menuSchema.plugin(toJSON);
 menuSchema.plugin(paginate);
 
+menuSchema.statics.isNameTaken = async function (name ) {
+  const user = await this.findOne({ name });
+  return !!user;
+};
   
 const Menu = mongoose.model('Menu', menuSchema);
 
