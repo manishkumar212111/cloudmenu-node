@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { Order, User, Restaurant} = require('../models');
+const { Order, User, Restaurant, Notification} = require('../models');
 // const Moment = require('moment')
 const ApiError = require('../utils/ApiError');
 // const { sendOTP  } = require('../services/email.service');
@@ -22,6 +22,8 @@ const createOrder = async (orderBody , user) => {
 
   let userData = await Restaurant.findById(orderBody.restaurant).populate("user");
   console.log(userData);
+
+  // send user push notification
   if(userData && userData?.user?.subscriptionData){
     const payload = JSON.stringify({
       title: 'New Order',
@@ -32,6 +34,14 @@ const createOrder = async (orderBody , user) => {
   
   }
   
+  // bell notification
+  await Notification.create({
+    title: "New Order",
+    description: `New order recieved with order id #${order.orderNo}`,
+    orderId: order.id || order._id,
+    restaurant:  orderBody.restaurant
+  })
+
   return order;
 };
 

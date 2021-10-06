@@ -30,6 +30,9 @@ roleRights.set(roles[0], [
 
   'manageMenus',
   'getMenus',
+
+  'manageNotifications',
+  'getNotifications',
   
 ]);
 
