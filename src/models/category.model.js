@@ -7,6 +7,9 @@ const categorySchema = mongoose.Schema(
   {
     name : {
         type : String,
+    },
+    nameAr : {
+      type : String,
     },  
     restaurant: {
         type: mongoose.SchemaTypes.ObjectId,
