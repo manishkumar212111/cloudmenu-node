@@ -30,10 +30,42 @@ const createNotification = async (notificationBody, user) => {
  * @returns {Promise<QueryResult>}
  */
 const queryNotifications = async (filter, options = {}) => {
-  return await Notification.paginate(filter, options , async (option) => {
-      return await Notification.find(option.filter).
-      sort(option.sort).skip(option.skip).limit(option.limit).exec()
-    });
+  console.log(filter, "kkjhkjhkj")
+  let res = await Notification.aggregate([
+    {$match : {...filter, restaurant: mongoose.Types.ObjectId(filter.restaurant)}}, 
+    {
+      $sort : {
+        createdAt : -1
+      }
+    },
+    {
+      $lookup: {
+        from:"orders",
+        localField: "orderId",
+        foreignField: "_id",
+        as: "order"
+     }},
+     {
+       $match: {
+      "order.status": "Pending"
+     }
+     },
+    //  {
+    //    $project: {
+    //      _id: 1,
+    //      id: 1,
+    //      title: 1,
+    //      description : 1 
+    //    }
+    //  }
+    
+  ]);
+  console.log(res)
+  return { results : res}
+  // return await Notification.paginate(filter, options , async (option) => {
+  //     return await Notification.find(option.filter).
+  //     sort(option.sort).skip(option.skip).limit(option.limit).exec()
+  //   });
 };
 
 /**
