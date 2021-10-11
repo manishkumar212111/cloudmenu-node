@@ -55,6 +55,7 @@ const createOrder = async (orderBody , user) => {
  * @returns {Promise<QueryResult>}
  */
 const queryOrders = async (filter, options) => {
+    filter.active = 1;
     return await Order.paginate(filter, options , async (option) => {
         return await Order.find(option.filter).populate('user', { email: 1 }).
         sort(option.sort).skip(option.skip).limit(option.limit).exec()

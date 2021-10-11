@@ -41,6 +41,13 @@ const orderSchema = mongoose.Schema(
       default: ""
 
     },
+    checkoutId:{
+      type: String
+    },
+    active: {
+      type: Number,
+      default: 1
+    },
     tableNo: {
       type : String,
       default: ""
