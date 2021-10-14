@@ -58,7 +58,6 @@ const updateRestaurant = {
       title : Joi.string(),
       logo_url : Joi.string(),
       description : Joi.string(),
-      social_links: Joi.array(),
       planName: Joi.string(),
       planDetail: Joi.object(),
       name : Joi.string(),
