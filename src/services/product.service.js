@@ -34,7 +34,7 @@ const createProduct = async (productBody, user) => {
 const queryProducts = async (filter, options = {}) => {
   return await Product.paginate(filter, options , async (option) => {
       return await Product.find(option.filter).populate('category').populate('modifierGroup.id').
-      sort(option.sort).skip(option.skip).limit(option.limit).exec()
+      sort("sort").skip(option.skip).limit(option.limit).exec()
     });
   // filter.restaurant = mongoose.Types.ObjectId(filter.restaurant);
   // let products = await Product.aggregate([
@@ -97,6 +97,13 @@ const getProductById = async (id) => {
  * @returns {Promise<Product>}
  */
 const updateProductById = async (productId, updateBody) => {
+  if(updateBody.productList && JSON.parse(updateBody.productList).length){
+    let h= [];
+    JSON.parse(updateBody.productList).forEach(async element => {
+      h = await Product.findByIdAndUpdate(element.id, { sort: element.sort});
+    });
+    return {id: "suuceess"};
+  }
   const product = await getProductById(productId);
   if (!product) {
     throw new ApiError(httpStatus.NOT_FOUND, "Product not found");

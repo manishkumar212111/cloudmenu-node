@@ -34,10 +34,10 @@ const queryCategorys = async (filter, options) => {
     if(filter.name && filter.name !== ""){
       filter.name = {'$regex': filter.name}
     }
-    
+    // options.sort="sort:desc";
     return await Category.paginate(filter, options , async (option) => {
         return await Category.find(option.filter).populate('user', { email: 1 }).
-        sort(option.sort).skip(option.skip).limit(option.limit).exec()
+        sort("sort").skip(option.skip).limit(option.limit).exec()
       });
 //   const categorys = await Category.paginate(filter, options);
 //   return categorys;
@@ -59,12 +59,16 @@ const getCategoryById = async (id) => {
  * @returns {Promise<Category>}
  */
 const updateCategoryById = async (categoryId, updateBody) => {
+  if(updateBody.categoryList && updateBody.categoryList.length){
+    let h= [];
+    updateBody.categoryList.forEach(async element => {
+      h = await Category.findByIdAndUpdate(element.id, { sort: element.sort});
+    });
+    return {id: "suuceess"};
+  }
   const category = await getCategoryById(categoryId);
   if (!category) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Category not found');
-  }
-  if (updateBody.email && (await Category.isEmailTaken(updateBody.email, categoryId))) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
   Object.assign(category, updateBody);
   await category.save();

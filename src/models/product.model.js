@@ -78,6 +78,10 @@ const productSchema = mongoose.Schema(
     calorie: {
       type : Number
     },
+    sort:{
+      type: Number,
+      default: 0
+    },
     modifierGroup: [{
       type: modifierSchema
     }]

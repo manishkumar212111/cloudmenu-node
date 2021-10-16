@@ -69,7 +69,8 @@ const updateProduct = {
       sellingPrice: Joi.number(),
       sellingPriceAr: Joi.number(),
       discount: Joi.number(),
-      modifierGroup: Joi.string()
+      modifierGroup: Joi.string(),
+      productList: Joi.string()
     }),
 };
 

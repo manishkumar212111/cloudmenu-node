@@ -20,6 +20,10 @@ const categorySchema = mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Menu',
       required: true,  
+    },
+    sort:{
+      type: Number,
+      default: 0
     }
   },
   {
