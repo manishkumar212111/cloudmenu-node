@@ -61,6 +61,7 @@ const updateProduct = {
       description: Joi.string(),
       descriptionAr: Joi.string(),
       inStock: Joi.boolean(),
+      sort: Joi.number(),
       status: Joi.number(),
       images : Joi.array(),
       currency: Joi.string(),

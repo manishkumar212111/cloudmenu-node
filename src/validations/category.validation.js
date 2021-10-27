@@ -39,6 +39,7 @@ const updateCategory = {
     .keys({
         name : Joi.string(),
         nameAr : Joi.string(),
+        sort: Joi.number(),
         categoryList: Joi.array()
     }),
 };

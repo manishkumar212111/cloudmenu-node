@@ -7,7 +7,6 @@ const menuSchema = mongoose.Schema(
   {
     name : {
         type : String,
-        unique: true
     },  
     restaurant: {
         type: mongoose.SchemaTypes.ObjectId,
