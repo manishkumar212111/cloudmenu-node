@@ -74,7 +74,9 @@ const changePassword = {
   }),
 };
 const empty = {
-  
+  query: Joi.object().keys({
+    user: Joi.string().custom(objectId)
+  }),
 }
 module.exports = {
   createUser,

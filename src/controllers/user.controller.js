@@ -3,6 +3,8 @@ const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { userService } = require('../services');
+const User = require('../models/user.model');
+const { Restaurant } = require('../models');
 
 const createUser = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
@@ -47,8 +49,13 @@ const changeEmail = catchAsync(async (req, res) => {
 });
 
 const getUserDetails = catchAsync(async (req , res) => {
-  const user = await userService.getUserDetails(req.query.userName);
-  res.send(user);
+  console.log(req.user)
+    const user = await User.findById(req.query.user);
+    const restaurant =await Restaurant.findOne({user: req.query.user}).select('status settings logo_url');
+    // user.restaurant = restaurant;
+    console.log(restaurant)
+
+    res.send({user: user, restaurant : restaurant});
 })
 module.exports = {
   createUser,
