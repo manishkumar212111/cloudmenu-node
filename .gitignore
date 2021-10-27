@@ -2,7 +2,7 @@ node_modules
 
 
 /uploads
-upload
+uploads
 # .env
 /node_modules
 
