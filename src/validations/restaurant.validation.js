@@ -6,16 +6,16 @@ const createRestaurant = {
     title : Joi.string(),
     logo_url : Joi.string(),
     description : Joi.string(),
-    social_links: Joi.array(),
     planName: Joi.string(),
     planDetail: Joi.object(),
     name : Joi.string(),
     nameAr : Joi.string(),
-    noOfTable: Joi.number(),
+    address: Joi.string(),
     manager_name: Joi.string(),
     email: Joi.string(),
     mobile: Joi.string(),
     ccode : Joi.string(),
+    menu: Joi.string().custom(objectId),
     documents: Joi.array(),
     full_address: Joi.string(),
     status: Joi.number(),
@@ -24,7 +24,13 @@ const createRestaurant = {
     closingTime: Joi.string(),
     city: Joi.string(),
     state: Joi.string(),
-    password : Joi.string()
+    currency: Joi.string(),
+    taxRate: Joi.string(),
+    taxStatus: Joi.boolean(),
+    noOfTable: Joi.number(),
+    bankDetail: Joi.string(),
+    settings: Joi.string(),
+    banner_url: Joi.string()
   }),
 };
 

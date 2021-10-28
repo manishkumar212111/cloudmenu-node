@@ -99,7 +99,7 @@ const restaurantSchema = mongoose.Schema(
     },
     status: {
         type : Number,
-        default : 0
+        default : 1
     },
     coverImage: {
         type : String

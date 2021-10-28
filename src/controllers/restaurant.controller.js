@@ -9,21 +9,24 @@ const { User } = require('../models');
 
 const createRestaurant = catchAsync(async (req, res) => {
   let body = req.body;
-  if(req.files.businessDoc && req.files.businessDoc[0]){
+  if(req?.files?.businessDoc && req?.files?.businessDoc[0]){
     body.businessDoc = req.files.businessDoc[0].path;
   }
-  if(req.files.coverImage && req.files.coverImage[0]){
+  if(req?.files?.coverImage && req.files?.coverImage[0]){
     body.coverImage = req.files.coverImage[0].path;
   }
 
-  const user = await User.findById(req.user);
-  // compare password
-  if (!user || !(await user.isPasswordMatch(req.body.password))) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect password');
+  if(req?.files?.logoImg && req?.files?.logoImg[0]){
+    body.logo_url = req.files.logoImg[0].path;
   }
-
-  delete body.password;
-
+  if(req?.files?.bannerImg && req.files?.bannerImg[0]){
+    body.banner_url = req.files.bannerImg[0].path;
+  }
+  if(req.body?.bankDetail){
+    console.log(req.body.bankDetail)
+    // body.bankDetail = JSON.parse(req.body.bankDetail)
+  }
+  
   const restaurant = await restaurantService.createRestaurant(body, req.user);
   res.send(restaurant)
 });
