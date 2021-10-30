@@ -24,15 +24,15 @@ const createOrder = async (orderBody , user) => {
   console.log(userData);
 
   // send user push notification
-  if(userData && userData?.user?.subscriptionData){
-    const payload = JSON.stringify({
-      title: 'New Order',
-      body: 'You have new order with id '+ order.orderNo,
-    })
+  // if(userData && userData?.user?.subscriptionData){
+  //   const payload = JSON.stringify({
+  //     title: 'New Order',
+  //     body: 'You have new order with id '+ order.orderNo,
+  //   })
   
-    await webpush.sendNotification(JSON.parse(userData?.user?.subscriptionData), payload)
+  //   await webpush.sendNotification(JSON.parse(userData?.user?.subscriptionData), payload)
   
-  }
+  // }
   
   // bell notification
   await Notification.create({
