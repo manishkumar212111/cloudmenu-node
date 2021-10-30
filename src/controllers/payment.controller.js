@@ -38,15 +38,15 @@ const capturePayment = catchAsync(async (req, res) => {
             console.log(userData);
             console.log(order);
             // send user push notification
-            if(userData && userData?.user?.subscriptionData){
-                const payload = JSON.stringify({
-                title: 'New Order',
-                body: 'You have new order with id '+ order.orderNo,
-                })
+            // if(userData && userData?.user?.subscriptionData){
+            //     const payload = JSON.stringify({
+            //     title: 'New Order',
+            //     body: 'You have new order with id '+ order.orderNo,
+            //     })
             
-                await webpush.sendNotification(JSON.parse(userData?.user?.subscriptionData), payload)
+            //     await webpush.sendNotification(JSON.parse(userData?.user?.subscriptionData), payload)
             
-            }
+            // }
             res.redirect(`${process.env.APP_URL}cart?type=success&orderId=${order.orderNo}`)
             // res.send({payment: resu, order: order})
         } else {
