@@ -13,9 +13,9 @@ const csvtojson = require("csvtojson");
  * @returns {Promise<Menu>}
  */
 const createMenu = async (menuBody, user) => {
-  if (await Menu.isNameTaken(menuBody.name)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'This menu name is already taken');
-  }
+  // if (await Menu.isNameTaken(menuBody.name)) {
+  //   throw new ApiError(httpStatus.BAD_REQUEST, 'This menu name is already taken');
+  // }
   menuBody.user = user.id;
   let menuList = await Menu.findOne({ restaurant :menuBody.restaurant  });
   if(menuBody.settings){
