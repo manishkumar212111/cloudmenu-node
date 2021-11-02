@@ -36,7 +36,7 @@ const getNotification = catchAsync(async (req, res) => {
 
 const updateNotification = catchAsync(async (req, res) => {
   let body = req.body;
-  const notification = await notificationService.updateNotificationById(req.params.notificationId, body);
+  const notification = await notificationService.updateNotificationById(req.params.notificationId, body, req.user);
   res.send(notification);
 });
 

@@ -36,6 +36,7 @@ const updateNotification = {
   }),
   body: Joi.object()
     .keys({
+        all : Joi.boolean(),
         title : Joi.string(),
         isOpened: Joi.boolean(),
         description: Joi.string(),

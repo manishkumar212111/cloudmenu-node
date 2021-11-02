@@ -210,6 +210,25 @@ const getProductsByUserName = async (userName, category) => {
   return await Product.find(filter);
 };
 
+const GetDays = (d,Mention_today=false, itm)=>{
+  //Mention today mean the array will have today date
+  const NameOfMonths = [("Jan"), ("Feb"), ("Mar") , ("Apr"), ("May"), ("Jun"), ("Jul"), ("Aug"), ("Sep"), ("Oct"), ("Nov"), ("Dec")] 
+  var DateArray = [];
+  var days=d;
+  for(var i=0;i<days;i++){
+  if(!Mention_today && i==0){i=1;days+=1}
+  var date = new Date();
+  var last = new Date(date.getTime() - (i * 24 * 60 * 60 * 1000));
+  var day =last.getDate();
+  var month=last.getMonth()+1;
+  var year=last.getFullYear();
+  const fulld = (Number(day)+'-'+ Number(month)+'-'+Number(year)) // Format date as you like
+  var obj = {key: (Number(day)+'-'+ NameOfMonths[Number(month)-1]+'-'+Number(year)) , value: itm[fulld] || 0}
+  DateArray.push(obj);
+  }
+  return DateArray;
+}
+
 const getAnalytics = async (filter) => {
   console.log(filter)
   if(filter?.restaurant){
@@ -249,6 +268,9 @@ const getAnalytics = async (filter) => {
     resultObj.orderInWeek[date] = (resultObj.orderInWeek[date] || 0) + 1 
     resultObj.revenueInWeek[date] = (resultObj.revenueInWeek[date] || 0) + parseFloat(itm.totalAmount) 
   })
+
+  resultObj.revenueInWeek = GetDays(7 ,true , resultObj.revenueInWeek)
+  resultObj.orderInWeek = GetDays(7 ,true , resultObj.orderInWeek)
 
   return resultObj;
 }

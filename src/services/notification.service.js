@@ -6,6 +6,7 @@ const { sendOTP } = require("../services/email.service");
 const stripeService = require("../services/stripe.service");
 var mongoose = require("mongoose");
 const csvtojson = require("csvtojson");
+const { restaurantService } = require(".");
 
 /**
  * Create a notification
@@ -83,7 +84,12 @@ const getNotificationById = async (id) => {
  * @param {Object} updateBody
  * @returns {Promise<Notification>}
  */
-const updateNotificationById = async (notificationId, updateBody) => {
+const updateNotificationById = async (notificationId, updateBody, user) => {
+  if(updateBody.all){
+    const resturant = await restaurantService.getRestaurantByUser(user.id);
+    await Notification.updateMany({ restaurant: resturant.id } , {isOpened : true});
+    return { status : true}
+  }
   const notification = await getNotificationById(notificationId);
   if (!notification) {
     throw new ApiError(httpStatus.NOT_FOUND, "Notification not found");
