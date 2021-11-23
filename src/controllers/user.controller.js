@@ -51,7 +51,7 @@ const changeEmail = catchAsync(async (req, res) => {
 const getUserDetails = catchAsync(async (req , res) => {
   console.log(req.user)
     const user = await User.findById(req.query.user);
-    const restaurant =await Restaurant.findOne({user: req.query.user}).select('status settings logo_url');
+    const restaurant =await Restaurant.findOne({user: req.query.user}).select('status settings logo_url url_key');
     // user.restaurant = restaurant;
     console.log(restaurant)
 

@@ -35,6 +35,7 @@ router
   .route('/user/subscription-request')
   .post(auth('manageRestaurants') , validate(RestaurantValidation.getRestaurant), RestaurantController.subScriptionRequest)
 
+
 router
   .route('/:restaurantId')
   .get(auth('manageRestaurants'), validate(RestaurantValidation.getRestaurant), RestaurantController.getRestaurant)

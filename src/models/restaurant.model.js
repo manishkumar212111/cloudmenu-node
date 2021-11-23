@@ -40,9 +40,12 @@ const restaurantSchema = mongoose.Schema(
     name: {
         type : String
     },
-     
     nameAr: {
         type : String
+    },
+    url_key:{
+        type : String,
+        unique: true
     },
     manager_name: {
         type : String
@@ -132,6 +135,16 @@ const restaurantSchema = mongoose.Schema(
 restaurantSchema.plugin(toJSON);
 restaurantSchema.plugin(paginate);
 
+/**
+ * Check if userName is already taken
+ * @param {string} userName - The user's email
+ * @param {ObjectId} [excludeUserId] - The id of the user to be excluded
+ * @returns {Promise<boolean>}
+ */
+ restaurantSchema.statics.isNameTaken = async function (url_key, excludeUserId) {
+    const restaurant = await this.findOne({ url_key, _id: { $ne: excludeUserId } });
+    return !!restaurant;
+  };
 
 // /**
 //  * Check if email is taken

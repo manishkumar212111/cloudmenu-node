@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const { restaurantService, userService } = require('../services');
 require("dotenv").config();
 const bcrypt = require('bcryptjs');
-const { User } = require('../models');
+const { User, Restaurant } = require('../models');
 
 const createRestaurant = catchAsync(async (req, res) => {
   let body = req.body;
@@ -85,6 +85,14 @@ const subScriptionRequest = catchAsync(async (req, res) => {
   res.send(await restaurantService.subScriptionRequest(req.user.id));
 })
 
+const restaurantByKey = catchAsync(async (req, res) => {
+  let restaurant = await Restaurant.findOne({url_key : req.query.url_key});
+  if (!restaurant) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Restaurant not found');
+  }
+  res.send(restaurant);
+})
+
 module.exports = {
   createRestaurant,
   getRestaurants,
@@ -92,5 +100,6 @@ module.exports = {
   updateRestaurant,
   deleteRestaurant,
   getRestaurantByUser,
-  subScriptionRequest
+  subScriptionRequest,
+  restaurantByKey
 };

@@ -32,6 +32,7 @@ const getProducts = {
     page: Joi.number().integer(),
     user: Joi.custom(objectId),
     from : Joi.string(),
+    url_key : Joi.string(),
     to : Joi.string(),
   }),
 };

@@ -47,6 +47,7 @@ const getRestaurants = {
 const getRestaurant = {
   query: Joi.object().keys({
     sortBy: Joi.string(),
+    url_key: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
   }),

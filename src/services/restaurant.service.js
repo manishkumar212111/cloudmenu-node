@@ -11,6 +11,12 @@ const { sendSubscriptionEmailToADmin  } = require('../services/email.service');
  * @returns {Promise<Restaurant>}
  */
 const createRestaurant = async (restaurantBody , user) => {
+  if (restaurantBody.name && await Restaurant.isNameTaken(restaurantBody.name.toLowerCase().replaceAll(" " , "-"))) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Restaurant already taken');
+  }
+  if(restaurantBody.name){
+    restaurantBody.url_key=restaurantBody.name.toLowerCase().replaceAll(" " , "-");
+  }
   restaurantBody.user = user.id;
   const restaurant = await Restaurant.create({ ...restaurantBody });
   return restaurant;
@@ -56,6 +62,12 @@ const updateRestaurantById = async (restaurantId, updateBody) => {
   }
   if (updateBody.email && (await Restaurant.isEmailTaken(updateBody.email, restaurantId))) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+  }
+  if (updateBody.name, await Restaurant.isNameTaken(updateBody.name.toLowerCase().replaceAll(" " , "-"), restaurantId)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Restaurant already taken');
+  }
+  if(updateBody.name){
+    updateBody.url_key=updateBody.name.toLowerCase().replaceAll(" " , "-");
   }
   if(updateBody.bankDetail){
     updateBody.bankDetail = JSON.parse(updateBody.bankDetail);
