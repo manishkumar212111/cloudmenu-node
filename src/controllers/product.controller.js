@@ -55,7 +55,7 @@ const getProductsByUser = catchAsync(async (req, res) => {
   //   basic_info : basic_info
   // });
 });
-
+ 
 const getAnalytics = catchAsync(async (req, res) => {
   let result = await productService.getAnalytics(req.query);
   res.send({ result });

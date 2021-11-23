@@ -311,6 +311,15 @@ const getAnalyticsByDate = async (filter, options={}) => {
       {
         $match: match
       },
+        {
+          $lookup:
+            {
+              from: "restaurants",
+              localField: "restaurant",
+              foreignField: "_id",
+              as: "resto_name"
+            }
+      }, 
       {
         $sort: {createdAt: -1}
       },
