@@ -319,7 +319,7 @@ const getAnalyticsByDate = async (filter, options={}) => {
             foreignField: "_id",
             as: "resto_name"
           }
-     },
+     }, 
       {
         $sort: {createdAt: -1}
       },
